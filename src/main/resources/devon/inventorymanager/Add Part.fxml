@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="557.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devon.inventorymanager.controller.Add_Part_Controller">
+   <children>
+      <Label layoutX="74.0" layoutY="62.0" text="Add Part">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="InHouse" layoutX="183.0" layoutY="62.0" mnemonicParsing="false" onAction="#onInHouse" text="In-House">
+         <toggleGroup>
+            <ToggleGroup fx:id="Part" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="OutSourced" layoutX="338.0" layoutY="62.0" mnemonicParsing="false" onAction="#onOutSourced" text="Outsourced" toggleGroup="$Part" />
+      <Label layoutX="88.0" layoutY="144.0" text="ID" />
+      <Label layoutX="88.0" layoutY="189.0" text="Name" />
+      <TextField layoutX="183.0" layoutY="140.0" />
+      <Label layoutX="88.0" layoutY="237.0" prefHeight="17.0" prefWidth="28.0" text="Inv" />
+      <TextField layoutX="183.0" layoutY="185.0" />
+      <TextField layoutX="183.0" layoutY="233.0" />
+      <TextField layoutX="183.0" layoutY="279.0" />
+      <TextField layoutX="183.0" layoutY="325.0" />
+      <TextField layoutX="183.0" layoutY="368.0" />
+      <TextField layoutX="425.0" layoutY="325.0" />
+      <Button layoutX="382.0" layoutY="441.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="500.0" layoutY="441.0" mnemonicParsing="false" text="Cancel" />
+      <Label layoutX="88.0" layoutY="283.0" text="Price/Cost" />
+      <Label layoutX="88.0" layoutY="329.0" text="Max" />
+      <Label fx:id="MachineIDLabel" layoutX="88.0" layoutY="372.0" text="Machine ID" />
+      <Label layoutX="368.0" layoutY="329.0" text="Min" />
+   </children>
+</AnchorPane>
