@@ -48,15 +48,25 @@ public class mainController implements Initializable {
         app_stage.show();
     }
 
-    public void onDeleteProduct(ActionEvent actionEvent) {
+    public void onDeleteProduct(ActionEvent actionEvent) throws IOException {
     }
 
-    public void onModifyProduct(ActionEvent actionEvent) {
+    public void onModifyProduct(ActionEvent actionEvent) throws IOException {
+        Parent modify_product_parent = FXMLLoader.load(getClass().getResource("Modify Product.fxml"));
+        Scene modify_product_scene = new Scene(modify_product_parent);
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.setScene(modify_product_scene);
+        app_stage.show();
     }
 
     public void onExit(ActionEvent actionEvent) {
     }
 
-    public void onaddProduct(ActionEvent actionEvent) {
+    public void onaddProduct(ActionEvent actionEvent) throws IOException {
+        Parent add_product_parent = FXMLLoader.load(getClass().getResource("Add Product.fxml"));
+        Scene add_product_scene = new Scene(add_product_parent);
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.setScene(add_product_scene);
+        app_stage.show();
     }
 }
