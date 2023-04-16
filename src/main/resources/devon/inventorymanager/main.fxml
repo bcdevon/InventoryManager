@@ -43,12 +43,12 @@
       </Label>
       <TextField layoutX="381.0" layoutY="119.0" />
       <TextField layoutX="916.0" layoutY="119.0" />
-      <Button layoutX="478.0" layoutY="539.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="388.0" layoutY="539.0" mnemonicParsing="false" text="Modify" />
+      <Button fx:id="deletePart" layoutX="478.0" layoutY="539.0" mnemonicParsing="false" onAction="#ondeletePart" text="Delete" />
+      <Button fx:id="modifyPart" layoutX="388.0" layoutY="539.0" mnemonicParsing="false" onAction="#onModifyPart" text="Modify" />
       <Button fx:id="addPart" layoutX="305.0" layoutY="539.0" mnemonicParsing="false" onAction="#onAddPartClicked" text="Add" />
-      <Button layoutX="1013.0" layoutY="539.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="925.0" layoutY="539.0" mnemonicParsing="false" text="Modify" />
-      <Button layoutX="840.0" layoutY="539.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="1013.0" layoutY="646.0" mnemonicParsing="false" text="Exit" />
+      <Button fx:id="deleteProduct" layoutX="1013.0" layoutY="539.0" mnemonicParsing="false" onAction="#onDeleteProduct" text="Delete" />
+      <Button fx:id="modifyProduct" layoutX="925.0" layoutY="539.0" mnemonicParsing="false" onAction="#onModifyProduct" text="Modify" />
+      <Button fx:id="addProduct" layoutX="840.0" layoutY="539.0" mnemonicParsing="false" onAction="#onaddProduct" text="Add" />
+      <Button fx:id="exit" layoutX="1013.0" layoutY="646.0" mnemonicParsing="false" onAction="#onExit" text="Exit" />
    </children>
 </AnchorPane>

@@ -17,15 +17,14 @@ import java.util.ResourceBundle;
 
 public class mainController implements Initializable {
     public Button addPart;
+    public Button deletePart;
+    public Button modifyPart;
+    public Button deleteProduct;
+    public Button modifyProduct;
+    public Button exit;
+    public Button addProduct;
     @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-    @Override
+      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
@@ -37,7 +36,27 @@ public class mainController implements Initializable {
         app_stage.setScene(add_part_scene);
         app_stage.show();
 
+    }
+    public void ondeletePart(ActionEvent actionEvent) {
+    }
 
+    public void onModifyPart(ActionEvent actionEvent) throws IOException {
+        Parent modify_part_parent = FXMLLoader.load(getClass().getResource("Modify Part.fxml"));
+        Scene modify_part_scene = new Scene(modify_part_parent);
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.setScene(modify_part_scene);
+        app_stage.show();
+    }
 
+    public void onDeleteProduct(ActionEvent actionEvent) {
+    }
+
+    public void onModifyProduct(ActionEvent actionEvent) {
+    }
+
+    public void onExit(ActionEvent actionEvent) {
+    }
+
+    public void onaddProduct(ActionEvent actionEvent) {
     }
 }
