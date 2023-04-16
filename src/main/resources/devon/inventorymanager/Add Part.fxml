@@ -30,8 +30,8 @@
       <TextField layoutX="183.0" layoutY="325.0" />
       <TextField layoutX="183.0" layoutY="368.0" />
       <TextField layoutX="425.0" layoutY="325.0" />
-      <Button layoutX="382.0" layoutY="441.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="500.0" layoutY="441.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="partSave" layoutX="382.0" layoutY="441.0" mnemonicParsing="false" onAction="#onpartSave" text="Save" />
+      <Button fx:id="partCancel" layoutX="500.0" layoutY="441.0" mnemonicParsing="false" onAction="#onpartCancel" text="Cancel" />
       <Label layoutX="88.0" layoutY="283.0" text="Price/Cost" />
       <Label layoutX="88.0" layoutY="329.0" text="Max" />
       <Label fx:id="MachineIDLabel" layoutX="88.0" layoutY="372.0" text="Machine ID" />
