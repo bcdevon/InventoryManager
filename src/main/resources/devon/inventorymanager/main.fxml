@@ -15,20 +15,20 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="80.0" layoutY="167.0" prefHeight="352.0" prefWidth="450.0">
+      <TableView fx:id="partsTable" layoutX="80.0" layoutY="167.0" prefHeight="352.0" prefWidth="450.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Part ID" />
-          <TableColumn prefWidth="91.0" text="Part Name" />
-            <TableColumn prefWidth="111.0" text="Inventory Level" />
-            <TableColumn prefWidth="172.0" text="Price/ Cost per Unit" />
+          <TableColumn fx:id="partIdCol" prefWidth="75.0" text="Part ID" />
+          <TableColumn fx:id="partNameCol" prefWidth="91.0" text="Part Name" />
+            <TableColumn fx:id="partInventoryCol" prefWidth="111.0" text="Inventory Level" />
+            <TableColumn fx:id="partPriceCol" prefWidth="172.0" text="Price/ Cost per Unit" />
         </columns>
       </TableView>
-      <TableView layoutX="615.0" layoutY="167.0" prefHeight="352.0" prefWidth="450.0">
+      <TableView fx:id="productsTable" layoutX="615.0" layoutY="167.0" prefHeight="352.0" prefWidth="450.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Product ID" />
-          <TableColumn prefWidth="101.0" text="Product Name" />
-            <TableColumn prefWidth="119.0" text="Inventory Level" />
-            <TableColumn minWidth="5.0" prefWidth="154.0" text="Price/ Cost per unit" />
+          <TableColumn fx:id="productIdCol" prefWidth="75.0" text="Product ID" />
+          <TableColumn fx:id="productNameCol" prefWidth="101.0" text="Product Name" />
+            <TableColumn fx:id="productInventoryCol" prefWidth="119.0" text="Inventory Level" />
+            <TableColumn fx:id="productPriceCol" minWidth="5.0" prefWidth="154.0" text="Price/ Cost per unit" />
         </columns>
       </TableView>
       <Label layoutX="80.0" layoutY="123.0" text="Parts">
