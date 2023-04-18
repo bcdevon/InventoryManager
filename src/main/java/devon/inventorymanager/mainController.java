@@ -39,17 +39,11 @@ public class mainController implements Initializable {
     public TableView productsTable;
     public TableView partsTable;
 
+
+
     @FXML
       @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        InHouse o = new InHouse(3, "wheel", 25.00, 5, 1,10, 42);
-        Inventory.addPart(o);
-
-        Product motorcycle = new Product(6, "Electric motorcycle", 15000.75, 1, 1,5);
-        Inventory.addProduct(motorcycle);
-
-
 
         partsTable.setItems(Inventory.getAllParts());
 
