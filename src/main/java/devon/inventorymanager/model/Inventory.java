@@ -19,4 +19,12 @@ public class Inventory {
     public static ObservableList<Product> getAllProducts() {
         return allProducts;
     }
+    public static void addTestData() {
+        InHouse wheel = new InHouse(3, "Wheel", 25.00, 5, 1, 10, 42);
+        Inventory.addPart(wheel);
+        OutSourced Rim = new OutSourced(5, "Rim", 50.00, 8, 1, 10, "Wheel company" );
+        Inventory.addPart(Rim);
+        Product motorcycle = new Product(6, "Electric motorcycle", 15000.75, 1, 1, 5);
+        Inventory.addProduct(motorcycle);
+    }
 }
