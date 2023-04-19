@@ -42,7 +42,15 @@ public class Add_Part_Controller implements Initializable {
         MachineIDLabel.setText("Company Name");
     }
 
-    public void onpartSave(ActionEvent actionEvent) {
+
+    public void onpartSave(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("tables");
+        stage.setScene(scene);
+        stage.show();
+
         String idS = partIDTF.getText();
         String nameS = partNameTF.getText();
         String invS = partInvTF.getText();
@@ -50,9 +58,21 @@ public class Add_Part_Controller implements Initializable {
         String maxS = partMaxTF.getText();
         String machineS = partMachineTF.getText();
         String minS = partMinTF.getText();
-        System.out.println(idS + " " + nameS + " " + invS + " " + priceS + " " + maxS + " " + machineS + " " + minS + " ");
-
-        int id = Integer.parseInt(idS);
+        //System.out.println(idS + " " + nameS + " " + invS + " " + priceS + " " + maxS + " " + machineS + " " + minS + " ");
+        // if the name value is blank then prt will not be added.
+        if(nameS.isBlank()){
+            System.out.println("Name Value is Blank");
+            return;
+        }
+//convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
+        int id = 0;
+        try {
+            id = Integer.parseInt(idS);
+        }
+        catch (NumberFormatException e){
+            System.out.println("ID value must be a number!");
+            return;
+        }
         int stock = Integer.parseInt(invS);
         double price = Double.parseDouble(priceS);
         int min = Integer.parseInt(minS);
@@ -61,8 +81,6 @@ public class Add_Part_Controller implements Initializable {
 
         InHouse widget = new InHouse(id, nameS, price, stock, min, max, machine);
         Inventory.addPart(widget);
-
-
     }
 
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
