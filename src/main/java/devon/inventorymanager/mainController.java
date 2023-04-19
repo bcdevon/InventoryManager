@@ -96,6 +96,8 @@ public class mainController implements Initializable {
     }
 
     public void onExit(ActionEvent actionEvent) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
 
     public void onaddProduct(ActionEvent actionEvent) throws IOException {

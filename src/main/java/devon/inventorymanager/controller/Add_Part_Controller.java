@@ -1,15 +1,14 @@
 package devon.inventorymanager.controller;
 
 import devon.inventorymanager.Main;
+import devon.inventorymanager.model.InHouse;
+import devon.inventorymanager.model.Inventory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,10 +22,16 @@ public class Add_Part_Controller implements Initializable {
     public Label MachineIDLabel;
     public Button partSave;
     public Button partCancel;
+    public TextField partIDTF;
+    public TextField partNameTF;
+    public TextField partInvTF;
+    public TextField partPriceTF;
+    public TextField partMaxTF;
+    public TextField partMachineTF;
+    public TextField partMinTF;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void onInHouse(ActionEvent actionEvent) {
@@ -38,6 +43,26 @@ public class Add_Part_Controller implements Initializable {
     }
 
     public void onpartSave(ActionEvent actionEvent) {
+        String idS = partIDTF.getText();
+        String nameS = partNameTF.getText();
+        String invS = partInvTF.getText();
+        String priceS =partPriceTF.getText();
+        String maxS = partMaxTF.getText();
+        String machineS = partMachineTF.getText();
+        String minS = partMinTF.getText();
+        System.out.println(idS + " " + nameS + " " + invS + " " + priceS + " " + maxS + " " + machineS + " " + minS + " ");
+
+        int id = Integer.parseInt(idS);
+        int stock = Integer.parseInt(invS);
+        double price = Double.parseDouble(priceS);
+        int min = Integer.parseInt(minS);
+        int max = Integer.parseInt(maxS);
+        int machine = Integer.parseInt(machineS);
+
+        InHouse widget = new InHouse(id, nameS, price, stock, min, max, machine);
+        Inventory.addPart(widget);
+
+
     }
 
     public void onpartCancel(ActionEvent actionEvent) throws IOException {

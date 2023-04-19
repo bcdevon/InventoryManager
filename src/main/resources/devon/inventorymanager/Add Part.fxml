@@ -22,14 +22,14 @@
       <RadioButton fx:id="OutSourced" layoutX="338.0" layoutY="62.0" mnemonicParsing="false" onAction="#onOutSourced" text="Outsourced" toggleGroup="$Part" />
       <Label layoutX="88.0" layoutY="144.0" text="ID" />
       <Label layoutX="88.0" layoutY="189.0" text="Name" />
-      <TextField layoutX="183.0" layoutY="140.0" />
+      <TextField fx:id="partIDTF" layoutX="183.0" layoutY="140.0" />
       <Label layoutX="88.0" layoutY="237.0" prefHeight="17.0" prefWidth="28.0" text="Inv" />
-      <TextField layoutX="183.0" layoutY="185.0" />
-      <TextField layoutX="183.0" layoutY="233.0" />
-      <TextField layoutX="183.0" layoutY="279.0" />
-      <TextField layoutX="183.0" layoutY="325.0" />
-      <TextField layoutX="183.0" layoutY="368.0" />
-      <TextField layoutX="425.0" layoutY="325.0" />
+      <TextField fx:id="partNameTF" layoutX="183.0" layoutY="185.0" />
+      <TextField fx:id="partInvTF" layoutX="183.0" layoutY="233.0" />
+      <TextField fx:id="partPriceTF" layoutX="183.0" layoutY="279.0" />
+      <TextField fx:id="partMaxTF" layoutX="183.0" layoutY="325.0" />
+      <TextField fx:id="partMachineTF" layoutX="183.0" layoutY="368.0" />
+      <TextField fx:id="partMinTF" layoutX="425.0" layoutY="325.0" />
       <Button fx:id="partSave" layoutX="382.0" layoutY="441.0" mnemonicParsing="false" onAction="#onpartSave" text="Save" />
       <Button fx:id="partCancel" layoutX="500.0" layoutY="441.0" mnemonicParsing="false" onAction="#onpartCancel" text="Cancel" />
       <Label layoutX="88.0" layoutY="283.0" text="Price/Cost" />
