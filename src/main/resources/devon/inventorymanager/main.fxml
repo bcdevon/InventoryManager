@@ -41,8 +41,8 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="381.0" layoutY="119.0" />
-      <TextField layoutX="916.0" layoutY="119.0" />
+      <TextField fx:id="partSearch" layoutX="381.0" layoutY="119.0" />
+      <TextField fx:id="productSearch" layoutX="916.0" layoutY="119.0" />
       <Button fx:id="deletePart" layoutX="478.0" layoutY="539.0" mnemonicParsing="false" onAction="#ondeletePart" text="Delete" />
       <Button fx:id="modifyPart" layoutX="388.0" layoutY="539.0" mnemonicParsing="false" onAction="#onModifyPart" text="Modify" />
       <Button fx:id="addPart" layoutX="305.0" layoutY="539.0" mnemonicParsing="false" onAction="#onAddPartClicked" text="Add" />
