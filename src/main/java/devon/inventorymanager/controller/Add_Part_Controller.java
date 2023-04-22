@@ -44,13 +44,6 @@ public class Add_Part_Controller implements Initializable {
 
 
     public void onpartSave(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("tables");
-        stage.setScene(scene);
-        stage.show();
-
         String idS = partIDTF.getText();
         String nameS = partNameTF.getText();
         String invS = partInvTF.getText();
@@ -70,9 +63,19 @@ public class Add_Part_Controller implements Initializable {
             id = Integer.parseInt(idS);
         }
         catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error dialog");
+            alert.setContentText("Please enter a valid value for each field.");
+            alert.showAndWait();
             System.out.println("ID value must be a number!");
             return;
         }
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("tables");
+        stage.setScene(scene);
+        stage.show();
         int stock = Integer.parseInt(invS);
         double price = Double.parseDouble(priceS);
         int min = Integer.parseInt(minS);
