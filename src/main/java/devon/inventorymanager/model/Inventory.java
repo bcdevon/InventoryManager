@@ -24,7 +24,15 @@ public class Inventory {
         Inventory.addPart(wheel);
         OutSourced Rim = new OutSourced(5, "Rim", 50.00, 8, 1, 10, "Wheel company" );
         Inventory.addPart(Rim);
+        InHouse powerplant = new InHouse(11,"PT6",65000.0,5,1,10,33);
+        Inventory.addPart(powerplant);
+        OutSourced Piston_engine = new OutSourced(2,"Rotax 912", 33000, 2,1,15,"Rotax");
+        Inventory.addPart(Piston_engine);
         Product motorcycle = new Product(6, "Electric motorcycle", 15000.75, 1, 1, 5);
         Inventory.addProduct(motorcycle);
+        Product airplane = new Product(7,"kitfox", 35000.76, 2, 1, 5);
+        Inventory.addProduct(airplane);
+        Product gokart = new Product(10,"ranger", 150.23, 6,1,10);
+        Inventory.addProduct(gokart);
     }
 }
