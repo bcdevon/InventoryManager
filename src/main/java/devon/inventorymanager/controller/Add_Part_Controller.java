@@ -78,6 +78,20 @@ public class Add_Part_Controller implements Initializable {
             max = Integer.parseInt(maxS);
             error = "machine ID";
             machine = Integer.parseInt(machineS);
+
+//            min <= stock stock <= max
+            if(min > stock){
+                System.out.println("inv must be >= min");
+                return;
+            }
+            if(stock > max){
+                System.out.println("inv must be <= max");
+                return;
+                }
+            if(price < 0){
+                System.out.println("price cannot be negative");
+                return;
+            }
         }
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
