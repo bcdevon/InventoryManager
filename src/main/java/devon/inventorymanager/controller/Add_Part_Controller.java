@@ -59,15 +59,32 @@ public class Add_Part_Controller implements Initializable {
         }
 //convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
         int id = 0;
+        int stock = 0;
+        double price = 0;
+        int min = 0;
+        int max = 0;
+        int machine = 0;
+        String error = "";
         try {
+            error = "id";
             id = Integer.parseInt(idS);
+            error = "stock";
+            stock = Integer.parseInt(invS);
+            error = "price";
+            price = Double.parseDouble(priceS);
+            error = "min";
+            min = Integer.parseInt(minS);
+            error = "max";
+            max = Integer.parseInt(maxS);
+            error = "machine ID";
+            machine = Integer.parseInt(machineS);
         }
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error dialog");
             alert.setContentText("Please enter a valid value for each field.");
             alert.showAndWait();
-            System.out.println("ID value must be a number!");
+            System.out.println(error + " " + "value must be a number!");
             return;
         }
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
@@ -76,11 +93,7 @@ public class Add_Part_Controller implements Initializable {
         stage.setTitle("tables");
         stage.setScene(scene);
         stage.show();
-        int stock = Integer.parseInt(invS);
-        double price = Double.parseDouble(priceS);
-        int min = Integer.parseInt(minS);
-        int max = Integer.parseInt(maxS);
-        int machine = Integer.parseInt(machineS);
+
 
         InHouse widget = new InHouse(id, nameS, price, stock, min, max, machine);
         Inventory.addPart(widget);
