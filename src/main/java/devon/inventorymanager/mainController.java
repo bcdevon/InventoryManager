@@ -37,6 +37,7 @@ public class mainController implements Initializable {
     public TableView productsTable;
     public TableView partsTable;
     public TextField partSearch;
+    public TextField productSearch;
 
 
     @FXML
@@ -116,6 +117,19 @@ public class mainController implements Initializable {
         return namedParts;
     }
 
+//    private ObservableList<Product> searchByProductName(String partialName){
+//        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
+//
+//        ObservableList<Product> allProducts = Inventory.getAllProducts();
+//
+//        for(Product nProduct: allProducts){
+//            if(nProduct.getName().contains(partialName)){
+//                namedProducts.add(nProduct);
+//            }
+//        }
+//        return namedProducts;
+//    }
+
     public void onPartsSearch(ActionEvent actionEvent) throws IOException{
         String partSearchTF = partSearch.getText();
         ObservableList<Part> parts = searchByName(partSearchTF);
@@ -149,4 +163,7 @@ public class mainController implements Initializable {
         return null;
     }
 
+    public void onProductSearch(ActionEvent actionEvent) {
+
+    }
 }

@@ -52,7 +52,7 @@ public class Add_Part_Controller implements Initializable {
         String machineS = partMachineTF.getText();
         String minS = partMinTF.getText();
         //System.out.println(idS + " " + nameS + " " + invS + " " + priceS + " " + maxS + " " + machineS + " " + minS + " ");
-        // if the name value is blank then prt will not be added.
+        // if the name value is blank then part will not be added.
         if(nameS.isBlank()){
             System.out.println("Name Value is Blank");
             return;
