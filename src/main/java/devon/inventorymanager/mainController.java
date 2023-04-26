@@ -1,6 +1,7 @@
 package devon.inventorymanager;
 import devon.inventorymanager.model.*;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -38,7 +36,8 @@ public class mainController implements Initializable {
     public TableColumn productPriceCol;
     public TableView productsTable;
     public TableView partsTable;
-
+    public TextField partSearch;
+    public TextField productSearch;
 
 
     @FXML
@@ -58,12 +57,8 @@ public class mainController implements Initializable {
         productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         productInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
-
-
-
-
-
     }
+
 
     public void onAddPartClicked(ActionEvent actionEvent) throws IOException {
         Parent add_part_parent = FXMLLoader.load(getClass().getResource("Add Part.fxml"));
@@ -107,5 +102,96 @@ public class mainController implements Initializable {
         app_stage.setScene(add_product_scene);
         app_stage.show();
     }
+    //loop through parts table search for parts with names that match entry in the
+    //search text field and display them in the parts tableview
+    private ObservableList<Part> searchByName(String partialName){
+        ObservableList<Part> namedParts = FXCollections.observableArrayList();
 
+        ObservableList<Part> allParts = Inventory.getAllParts();
+
+        for(Part np: allParts){
+            if(np.getName().contains(partialName)){
+                namedParts.add(np);
+            }
+        }
+        return namedParts;
+    }
+
+    ///Search products in table by name return parts to table view that match.
+    private ObservableList<Product> searchByProductName(String partialName){
+        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
+
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+
+        for(Product nProduct: allProducts){
+            if(nProduct.getName().contains(partialName)){
+                namedProducts.add(nProduct);
+            }
+        }
+        return namedProducts;
+    }
+
+    public void onPartsSearch(ActionEvent actionEvent) throws IOException{
+        String partSearchTF = partSearch.getText();
+        ObservableList<Part> parts = searchByName(partSearchTF);
+
+        if(parts.size() == 0){
+            try {
+                int id = Integer.parseInt(partSearchTF);
+                Part idP = getPartByID(id);
+                if (idP != null)
+                    parts.add(idP);
+            }
+            catch (NumberFormatException e){
+                //ignore
+            }
+
+        }
+
+        partsTable.setItems(parts);
+    }
+
+    ///search by part id return parts that match the ID to the parts table view///
+    private Part getPartByID(int id){
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        for(int i = 0; i < allParts.size(); i++){
+            Part idP = allParts.get(i);
+            if (idP.getId() == id){
+                return idP;
+            }
+        }
+
+        return null;
+    }
+
+    public void onProductSearch(ActionEvent actionEvent) throws IOException{
+        String productSearchTF = productSearch.getText();
+        ObservableList<Product> products = searchByProductName(productSearchTF);
+        productsTable.setItems(products);
+
+        if(products.size() == 0){
+            try {
+                int id = Integer.parseInt(productSearchTF);
+                Product idProd = getProductByID(id);
+                if(idProd != null)
+                    products.add(idProd);
+            }
+            catch (NumberFormatException e){
+                //ignore
+            }
+        }
+        productsTable.setItems(products);
+
+    }
+
+    private Product getProductByID(int id){
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+        for(int i = 0; i < allProducts.size(); i++){
+            Product idProd = allProducts.get(i);
+            if(idProd.getId() == id){
+                return idProd;
+            }
+        }
+        return null;
+    }
 }
