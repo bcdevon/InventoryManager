@@ -117,18 +117,19 @@ public class mainController implements Initializable {
         return namedParts;
     }
 
-//    private ObservableList<Product> searchByProductName(String partialName){
-//        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
-//
-//        ObservableList<Product> allProducts = Inventory.getAllProducts();
-//
-//        for(Product nProduct: allProducts){
-//            if(nProduct.getName().contains(partialName)){
-//                namedProducts.add(nProduct);
-//            }
-//        }
-//        return namedProducts;
-//    }
+    ///Search products in table by name return parts to table view that match.
+    private ObservableList<Product> searchByProductName(String partialName){
+        ObservableList<Product> namedProducts = FXCollections.observableArrayList();
+
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+
+        for(Product nProduct: allProducts){
+            if(nProduct.getName().contains(partialName)){
+                namedProducts.add(nProduct);
+            }
+        }
+        return namedProducts;
+    }
 
     public void onPartsSearch(ActionEvent actionEvent) throws IOException{
         String partSearchTF = partSearch.getText();
@@ -163,7 +164,34 @@ public class mainController implements Initializable {
         return null;
     }
 
-    public void onProductSearch(ActionEvent actionEvent) {
+    public void onProductSearch(ActionEvent actionEvent) throws IOException{
+        String productSearchTF = productSearch.getText();
+        ObservableList<Product> products = searchByProductName(productSearchTF);
+        productsTable.setItems(products);
 
+        if(products.size() == 0){
+            try {
+                int id = Integer.parseInt(productSearchTF);
+                Product idProd = getProductByID(id);
+                if(idProd != null)
+                    products.add(idProd);
+            }
+            catch (NumberFormatException e){
+                //ignore
+            }
+        }
+        productsTable.setItems(products);
+
+    }
+
+    private Product getProductByID(int id){
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+        for(int i = 0; i < allProducts.size(); i++){
+            Product idProd = allProducts.get(i);
+            if(idProd.getId() == id){
+                return idProd;
+            }
+        }
+        return null;
     }
 }
