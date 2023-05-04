@@ -26,7 +26,7 @@
             <TableColumn prefWidth="128.0" text="Price/Cost per Unit" />
         </columns>
       </TableView>
-      <Button fx:id="addProduct" layoutX="718.0" layoutY="266.0" mnemonicParsing="false" onAction="#onAddProduct" text="Add" />
+      <Button fx:id="addPartToProduct" layoutX="718.0" layoutY="266.0" mnemonicParsing="false" onAction="#onAddPartToProduct" text="Add" />
       <Button fx:id="removeAssociatedPart" layoutX="608.0" layoutY="518.0" mnemonicParsing="false" onAction="#onRemoveAssociatedPart" prefHeight="25.0" prefWidth="155.0" text="Remove Associated Part" />
       <Button fx:id="addProductSave" layoutX="606.0" layoutY="557.0" mnemonicParsing="false" onAction="#onaddProductSave" text="Save" />
       <Button fx:id="addProductCancel" layoutX="711.0" layoutY="557.0" mnemonicParsing="false" onAction="#onAddProductCancel" text="Cancel" />
@@ -36,12 +36,12 @@
       <Label layoutX="59.0" layoutY="270.0" text="Price" />
       <Label layoutX="59.0" layoutY="302.0" text="Max" />
       <Label layoutX="220.0" layoutY="302.0" text="Min" />
-      <TextField layoutX="115.0" layoutY="142.0" />
-      <TextField layoutX="115.0" layoutY="182.0" />
-      <TextField layoutX="115.0" layoutY="219.0" prefHeight="25.0" prefWidth="86.0" />
-      <TextField layoutX="115.0" layoutY="266.0" prefHeight="25.0" prefWidth="86.0" />
-      <TextField layoutX="115.0" layoutY="298.0" prefHeight="25.0" prefWidth="86.0" />
-      <TextField layoutX="264.0" layoutY="298.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="productIDTF" layoutX="115.0" layoutY="142.0" />
+      <TextField fx:id="productNameTF" layoutX="115.0" layoutY="182.0" />
+      <TextField fx:id="productInvTF" layoutX="115.0" layoutY="219.0" prefHeight="25.0" prefWidth="86.0" />
+      <TextField fx:id="productPriceTF" layoutX="115.0" layoutY="266.0" prefHeight="25.0" prefWidth="86.0" />
+      <TextField fx:id="productMaxTF" layoutX="115.0" layoutY="298.0" prefHeight="25.0" prefWidth="86.0" />
+      <TextField fx:id="productMinTF" layoutX="264.0" layoutY="298.0" prefHeight="25.0" prefWidth="71.0" />
       <Label layoutX="51.0" layoutY="46.0" text="Add Product">
          <font>
             <Font name="System Bold" size="13.0" />
