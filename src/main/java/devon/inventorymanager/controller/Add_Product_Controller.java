@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,24 +15,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Add_Product_Controller implements Initializable {
-    public Button addProduct;
     public Button removeAssociatedPart;
     public Button addProductSave;
     public Button addProductCancel;
+    public Button addPartToProduct;
+    public TextField productIDTF;
+    public TextField productNameTF;
+    public TextField productInvTF;
+    public TextField productPriceTF;
+    public TextField productMaxTF;
+    public TextField productMinTF;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    public void onAddProduct(ActionEvent actionEvent) {
-    }
+    
 
     public void onRemoveAssociatedPart(ActionEvent actionEvent) {
     }
-
-    public void onaddProductSave(ActionEvent actionEvent) {
-    }
+    
 
     public void onAddProductCancel(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
@@ -40,5 +44,11 @@ public class Add_Product_Controller implements Initializable {
         stage.setTitle("tables");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onaddProductSave(ActionEvent actionEvent) {
+    }
+
+    public void onAddPartToProduct(ActionEvent actionEvent) {
     }
 }
