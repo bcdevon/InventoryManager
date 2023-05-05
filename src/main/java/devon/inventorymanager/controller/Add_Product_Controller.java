@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,6 +27,16 @@ public class Add_Product_Controller implements Initializable {
     public TextField productPriceTF;
     public TextField productMaxTF;
     public TextField productMinTF;
+    public TableView availablePartsTable;
+    public TableColumn availablePartIDCol;
+    public TableColumn availablePartNameCol;
+    public TableColumn availablePartInventoryCol;
+    public TableColumn availablePartPriceCol;
+    public TableView associatedParts;
+    public TableColumn associatedPartIDCol;
+    public TableColumn associatedPartNameCol;
+    public TableColumn associatedPartInventoryCol;
+    public TableColumn associatedPartPriceCol;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
