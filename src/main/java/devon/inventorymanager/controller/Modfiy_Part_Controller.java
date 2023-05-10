@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +21,14 @@ public class Modfiy_Part_Controller implements Initializable {
     public RadioButton modifyOutsourced;
     public Label modifypartID;
     public Button modifyPartCancel;
+    public TextField modPartIDTF;
+    public TextField modPartNameTF;
+    public TextField modPartInvTF;
+    public TextField modPartPriceTF;
+    public TextField modPartMaxTF;
+    public TextField modMachineTF;
+    public TextField modPartMinTF;
+    public Button modPartSave;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,5 +51,15 @@ public class Modfiy_Part_Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void onModPartSave(ActionEvent actionEvent) throws IOException {
+        String modidS = modPartIDTF.getText();
+        String modnameS = modPartNameTF.getText();
+        String modinvS = modPartInvTF.getText();
+        String modpriceS = modPartPriceTF.getText();
+        String modmaxS = modPartMaxTF.getText();
+        String modmachineS = modMachineTF.getText();
+        String modminS = modPartMinTF.getText();
     }
 }
