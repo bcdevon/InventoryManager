@@ -61,5 +61,36 @@ public class Modfiy_Part_Controller implements Initializable {
         String modmaxS = modPartMaxTF.getText();
         String modmachineS = modMachineTF.getText();
         String modminS = modPartMinTF.getText();
+
+        int id = 0;
+        int stock = 0;
+        double price = 0;
+        int min = 0;
+        int max = 0;
+        int machine = 0;
+        String error = "";
+        try {
+            error = "id";
+            id = Integer.parseInt(modidS);
+            error = "stock";
+            stock = Integer.parseInt(modinvS);
+            error = "price";
+            price = Double.parseDouble(modpriceS);
+            error = "min";
+            min = Integer.parseInt(modminS);
+            error = "max";
+            max = Integer.parseInt(modmaxS);
+            error = "machine ID";
+            machine = Integer.parseInt(modmachineS);
+        }
+        catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error dialog");
+            alert.setContentText("Please enter a valid value for each value");
+            alert.showAndWait();
+            System.out.println(error + " " + "value must be a number!");
+            return;
+        }
     }
+
 }
