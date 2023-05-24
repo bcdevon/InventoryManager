@@ -1,9 +1,10 @@
 package devon.inventorymanager.controller;
-
+import devon.inventorymanager.model.Inventory;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.InHouse;
 import devon.inventorymanager.model.OutSourced;
 import devon.inventorymanager.model.Part;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ public class Modfiy_Part_Controller implements Initializable {
     public TextField modPartMaxTF;
     public TextField modMachineTF;
     public TextField modPartMinTF;
+    public Button modifyPartSave;
     private Part part;
 
     public void setPart(Part part) {
@@ -74,6 +76,47 @@ public class Modfiy_Part_Controller implements Initializable {
         stage.setTitle("tables");
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    public void onSave(ActionEvent actionEvent) throws IOException{
+        int partID = Integer.parseInt(modPartIDTF.getText());
+        String partName = modPartNameTF.getText();
+        int partStock = Integer.parseInt(modPartInvTF.getText());
+        double partPrice = Double.parseDouble(modPartPriceTF.getText());
+        int partMax = Integer.parseInt(modPartMaxTF.getText());
+        int partMin = Integer.parseInt(modPartMinTF.getText());
+
+        if (modifypart.getSelectedToggle() == modifyinHouse) {
+            int machineID = Integer.parseInt(modMachineTF.getText());
+
+            InHouse modifiedPart = new InHouse(partID, partName, partPrice, partStock, partMin, partMax, machineID);
+            updatePartInInventory(modifiedPart);
+        } else if (modifypart.getSelectedToggle() == modifyOutsourced) {
+            String companyName = modMachineTF.getText();
+
+            OutSourced modifiedPart = new OutSourced(partID, partName, partPrice, partStock, partMin, partMax, companyName);
+            updatePartInInventory(modifiedPart);
+        }
+
+        // Go back to the main screen
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1200, 700);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Main Screen");
+        stage.setScene(scene);
+        stage.show();
+    }
+    private void updatePartInInventory(Part modifiedPart) {
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        for (int i = 0; i < allParts.size(); i++) {
+            Part part = allParts.get(i);
+            if (part.getId() == modifiedPart.getId()) {
+                allParts.set(i, modifiedPart);
+                break;
+            }
+            }
 
     }
 }
