@@ -1,5 +1,8 @@
 package devon.inventorymanager;
+import devon.inventorymanager.controller.Modfiy_Part_Controller;
 import devon.inventorymanager.model.*;
+import devon.inventorymanager.model.Part;
+import javafx.scene.control.TableView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,11 +75,20 @@ public class mainController implements Initializable {
     }
 
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
-        Parent modify_part_parent = FXMLLoader.load(getClass().getResource("Modify Part.fxml"));
-        Scene modify_part_scene = new Scene(modify_part_parent);
-        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        app_stage.setScene(modify_part_scene);
-        app_stage.show();
+        Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPart == null){
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Modify Part.fxml"));
+        Parent modifyPartParent = fxmlLoader.load();
+        Modfiy_Part_Controller modifyPartController = fxmlLoader.getController();
+        modifyPartController.setPart(selectedPart);
+
+        Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene modifyPartScene = new Scene(modifyPartParent);
+        appStage.setScene(modifyPartScene);
+        appStage.show();
     }
 
     public void onDeleteProduct(ActionEvent actionEvent) throws IOException {
