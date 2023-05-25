@@ -55,13 +55,7 @@ public class Modfiy_Part_Controller implements Initializable {
     public RadioButton modifyOutsourced;
     public Label modifypartID;
     public Button modifyPartCancel;
-    public TextField modPartIDTF;
-    public TextField modPartNameTF;
-    public TextField modPartInvTF;
-    public TextField modPartPriceTF;
-    public TextField modPartMaxTF;
-    public TextField modMachineTF;
-    public TextField modPartMinTF;
+
     public Button modPartSave;
 
     @Override
@@ -87,7 +81,7 @@ public class Modfiy_Part_Controller implements Initializable {
 
     }
 
-modifyParts
+
     public void onSave(ActionEvent actionEvent) throws IOException{
         int partID = Integer.parseInt(modPartIDTF.getText());
         String partName = modPartNameTF.getText();
@@ -128,5 +122,5 @@ modifyParts
             }
 
     }
- main
+
 }
