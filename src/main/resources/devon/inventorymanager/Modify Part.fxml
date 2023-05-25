@@ -35,7 +35,9 @@
       <TextField fx:id="modMachineTF" layoutX="189.0" layoutY="322.0" />
       <Label layoutX="391.0" layoutY="289.0" text="Min" />
       <TextField fx:id="modPartMinTF" layoutX="458.0" layoutY="285.0" />
+modifyParts
       <Button fx:id="modifyPartSave" layoutX="379.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
+main
       <Button fx:id="modifyPartCancel" layoutX="507.0" layoutY="400.0" mnemonicParsing="false" onAction="#onModifyPartCancel" text="Cancel" />
    </children>
 </AnchorPane>
