@@ -3,7 +3,8 @@ import devon.inventorymanager.controller.Modfiy_Part_Controller;
 import devon.inventorymanager.model.*;
 import devon.inventorymanager.model.Part;
 import javafx.scene.control.TableView;
-
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -113,6 +114,11 @@ public class mainController implements Initializable {
         Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         app_stage.setScene(add_product_scene);
         app_stage.show();
+
+        //Update availablePartsTable with all the parts
+
+
+
     }
     //loop through parts table search for parts with names that match entry in the
     //search text field and display them in the parts tableview
