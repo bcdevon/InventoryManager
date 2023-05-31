@@ -1,5 +1,6 @@
 package devon.inventorymanager;
 import devon.inventorymanager.controller.Modfiy_Part_Controller;
+import devon.inventorymanager.controller.Modify_Product_Controller;
 import devon.inventorymanager.model.*;
 import devon.inventorymanager.model.Part;
 import javafx.scene.control.TableView;
@@ -96,11 +97,33 @@ public class mainController implements Initializable {
     }
 
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
-        Parent modify_product_parent = FXMLLoader.load(getClass().getResource("Modify Product.fxml"));
-        Scene modify_product_scene = new Scene(modify_product_parent);
-        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        app_stage.setScene(modify_product_scene);
-        app_stage.show();
+        Product selectedProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProduct == null) {
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Modify Product.fxml"));
+        Parent modifyProductParent = fxmlLoader.load();
+
+        Modify_Product_Controller modifyProductController = fxmlLoader.getController();
+        modifyProductController.setProduct(selectedProduct); // Set the selected product in the controller
+
+        // Set the text fields with the values from the selected product
+        modifyProductController.productIDTF.setText(String.valueOf(selectedProduct.getId()));
+        modifyProductController.productNameTF.setText(selectedProduct.getName());
+        modifyProductController.productPriceTF.setText(String.valueOf(selectedProduct.getPrice()));
+        modifyProductController.productInvTF.setText(String.valueOf(selectedProduct.getStock()));
+        modifyProductController.productMinTF.setText(String.valueOf(selectedProduct.getMin()));
+        modifyProductController.productMaxTF.setText(String.valueOf(selectedProduct.getMax()));
+
+        Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene modifyProductScene = new Scene(modifyProductParent);
+        appStage.setScene(modifyProductScene);
+        appStage.show();
+
+
+
+
     }
 
     public void onExit(ActionEvent actionEvent) {

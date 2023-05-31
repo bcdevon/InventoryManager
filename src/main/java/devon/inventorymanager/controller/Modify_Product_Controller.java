@@ -1,11 +1,14 @@
 package devon.inventorymanager.controller;
 import devon.inventorymanager.Main;
+import devon.inventorymanager.model.Product;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,11 +20,25 @@ public class Modify_Product_Controller implements Initializable {
     public Button removeModifyProduct;
     public Button saveModifyProduct;
     public Button cancelModifyProduct;
+    public TextField productIDTF;
+    public TextField productNameTF;
+    public TextField productInvTF;
+    public TextField productPriceTF;
+    public TextField productMaxTF;
+    public TextField productMinTF;
+    private Product product;
+    @FXML
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 
     public void onAddModifyProduct(ActionEvent actionEvent) {
     }
