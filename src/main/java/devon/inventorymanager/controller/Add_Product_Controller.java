@@ -2,6 +2,7 @@ package devon.inventorymanager.controller;
 import devon.inventorymanager.model.Inventory;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.Part;
+import devon.inventorymanager.model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -87,6 +88,34 @@ public class Add_Product_Controller implements Initializable {
     }
 
     public void onaddProductSave(ActionEvent actionEvent) {
+        //Get values from textfields
+        int productID = Integer.parseInt(productIDTF.getText());
+        String productName = productNameTF.getText();
+        int productInventory = Integer.parseInt(productInvTF.getText());
+        double productPrice = Double.parseDouble(productPriceTF.getText());
+        int productMax = Integer.parseInt(productMaxTF.getText());
+        int productMin = Integer.parseInt(productMinTF.getText());
+
+        Product newProduct = new Product(productID, productName, productPrice, productInventory, productMin, productMax);
+
+        //add the associated parts to the new product
+        newProduct.getAssociatedParts().addAll(associatedPartsList);
+
+        //add new product to inventory
+        Inventory.addProduct(newProduct);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("tables");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void onAddPartToProduct(ActionEvent actionEvent) {

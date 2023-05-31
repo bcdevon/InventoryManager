@@ -1,6 +1,10 @@
 package devon.inventorymanager.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Product {
+    private ObservableList<Part> associatedParts;
     private int id;
     private String name;
     private double price;
@@ -15,6 +19,7 @@ public class Product {
         this.stock = stock;
         this.min = min;
         this.max = max;
+        associatedParts = FXCollections.observableArrayList();
     }
 
     public int getId() {
@@ -57,11 +62,19 @@ public class Product {
         this.min = min;
     }
 
-    public int getMax() {
-        return max;
-    }
+    public int getMax() {return max; }
 
     public void setMax(int max) {
+
         this.max = max;
     }
+     public void addAssociatedPart(Part part) {
+        associatedParts.add(part);
+     }
+     public void removeAssociatedPart(Part part) {
+        associatedParts.remove(part);
+     }
+     public ObservableList<Part> getAssociatedParts() {
+        return associatedParts;
+     }
 }
