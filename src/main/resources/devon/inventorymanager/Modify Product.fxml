@@ -10,20 +10,20 @@
 
 <AnchorPane prefHeight="603.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="devon.inventorymanager.controller.Modify_Product_Controller">
     <children>
-        <TableView layoutX="432.0" layoutY="54.0" prefHeight="200.0" prefWidth="386.0">
+        <TableView fx:id="productAvailablePartsTable" layoutX="434.0" layoutY="55.0" prefHeight="200.0" prefWidth="386.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Part ID" />
-                <TableColumn prefWidth="75.0" text="Part Name" />
-                <TableColumn prefWidth="106.0" text="Inventory Level" />
-                <TableColumn prefWidth="129.0" text="Price/Cost per Unit" />
+                <TableColumn fx:id="productAvailablePartIDCol" prefWidth="75.0" text="Part ID" />
+                <TableColumn fx:id="productAvailablePartNameCol" prefWidth="75.0" text="Part Name" />
+                <TableColumn fx:id="productAvailablePartInvCol" prefWidth="106.0" text="Inventory Level" />
+                <TableColumn fx:id="productAvailablePartPriceCol" prefWidth="129.0" text="Price/Cost per Unit" />
             </columns>
         </TableView>
-        <TableView layoutX="432.0" layoutY="302.0" prefHeight="200.0" prefWidth="386.0">
+        <TableView fx:id="productAssociatedPartsTable" layoutX="432.0" layoutY="302.0" prefHeight="200.0" prefWidth="386.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Part ID" />
-                <TableColumn prefWidth="75.0" text="Part Name" />
-                <TableColumn prefWidth="107.0" text="Inventory Level" />
-                <TableColumn prefWidth="128.0" text="Price/Cost per Unit" />
+                <TableColumn fx:id="productAssociatedPartIDCol" prefWidth="75.0" text="Part ID" />
+                <TableColumn fx:id="productAssociatedPartNameCol" prefWidth="75.0" text="Part Name" />
+                <TableColumn fx:id="productAssociatedPartInvCol" prefWidth="107.0" text="Inventory Level" />
+                <TableColumn fx:id="productAssociatedPartPriceCol" prefWidth="128.0" text="Price/Cost per Unit" />
             </columns>
         </TableView>
         <Button fx:id="addModifyProduct" layoutX="718.0" layoutY="266.0" mnemonicParsing="false" onAction="#onAddModifyProduct" text="Add" />
