@@ -49,7 +49,12 @@ public class Modify_Product_Controller implements Initializable {
     @FXML
     public void setProduct(Product product) {
         this.product = product;
+        //check if the product has associated parts
+        if (product != null){
+            productAssociatedParts.setAll(product.getAssociatedParts());
+        }
     }
+
 
 
     @Override
@@ -69,6 +74,8 @@ public class Modify_Product_Controller implements Initializable {
         productAssociatedPartInvCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         productAssociatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+
+
     }
 
     public void onAddModifyProduct(ActionEvent actionEvent) {
@@ -86,6 +93,7 @@ public class Modify_Product_Controller implements Initializable {
     }
 
     public void onSaveModifyProduct(ActionEvent actionEvent) {
+
         //get values from textfields
         int productId = Integer.parseInt(productIDTF.getText());
         String productName = productNameTF.getText();
@@ -101,9 +109,24 @@ public class Modify_Product_Controller implements Initializable {
         product.setPrice(productPrice);
         product.setMax(productMax);
         product.setMin(productMin);
+        //add associated parts to product
+        product.getAssociatedParts().setAll(productAssociatedParts);
+
         //save the associated parts to the product
 
+
         //return to main screen
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("tables");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void onCancelModifyProduct(ActionEvent actionEvent) throws IOException {
