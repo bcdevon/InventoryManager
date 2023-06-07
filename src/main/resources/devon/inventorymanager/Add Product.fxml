@@ -47,5 +47,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <TextField fx:id="searchAddProduct" layoutX="669.0" layoutY="21.0" />
    </children>
 </AnchorPane>
