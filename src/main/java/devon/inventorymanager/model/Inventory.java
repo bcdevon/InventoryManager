@@ -12,6 +12,9 @@ public class Inventory {
     public static void addProduct(Product product){
         allProducts.add(product);
     }
+    public static void deletePart(Part part){
+        getAllParts().remove(part);
+    }
     public static ObservableList<Part> getAllParts() {
         return allParts;
     }

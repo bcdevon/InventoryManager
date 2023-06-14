@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class mainController implements Initializable {
@@ -74,6 +75,20 @@ public class mainController implements Initializable {
 
     }
     public void ondeletePart(ActionEvent actionEvent) {
+        Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPart == null){
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete");
+        alert.setHeaderText("Delete Part");
+        alert.setContentText("Do you want to delete this part");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK){
+            Inventory.deletePart(selectedPart);
+        }
     }
 
     public void onModifyPart(ActionEvent actionEvent) throws IOException {
