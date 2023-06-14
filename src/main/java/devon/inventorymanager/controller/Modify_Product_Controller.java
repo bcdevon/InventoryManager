@@ -45,6 +45,7 @@ public class Modify_Product_Controller implements Initializable {
     public TableColumn productAssociatedPartPriceCol;
     public ObservableList<Part> productAvailableParts;
     public ObservableList<Part> productAssociatedParts;
+    public TextField searchModifyProduct;
     private Product product;
     @FXML
     public void setProduct(Product product) {
@@ -137,4 +138,50 @@ public class Modify_Product_Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    private ObservableList<Part> searchByName(String partialName){
+        ObservableList<Part> namedParts = FXCollections.observableArrayList();
+
+        ObservableList<Part> allParts = Inventory.getAllParts();
+
+        for(Part np: allParts){
+            if(np.getName().contains(partialName)){
+                namedParts.add(np);
+            }
+        }
+        return namedParts;
+    }
+    private Part getPartByID(int id){
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        for(int i = 0; i < allParts.size(); i++){
+            Part idP = allParts.get(i);
+            if (idP.getId() == id){
+                return idP;
+            }
+        }
+
+        return null;
+    }
+
+    public void onModifySearch(ActionEvent actionEvent) {
+        String modifyProductSearchTF = searchModifyProduct.getText();
+        ObservableList<Part> parts = searchByName(modifyProductSearchTF);
+        productAvailablePartsTable.setItems(parts);
+
+        if(parts.size() == 0){
+            try {
+                int id = Integer.parseInt(modifyProductSearchTF);
+                Part idP = getPartByID(id);
+                if (idP != null)
+                    parts.add(idP);
+            }
+            catch (NumberFormatException e){
+                //ignore
+            }
+        }
+        productAvailablePartsTable.setItems(parts);
+
+    }
+
+
 }
