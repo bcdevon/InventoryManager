@@ -109,6 +109,20 @@ public class mainController implements Initializable {
     }
 
     public void onDeleteProduct(ActionEvent actionEvent) throws IOException {
+        Product selectedProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProduct == null) {
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete");
+        alert.setHeaderText("Deleting Product");
+        alert.setContentText("Are you sure you want to delete this Product?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Inventory.deleteProduct(selectedProduct);
+        }
     }
 
     public void onModifyProduct(ActionEvent actionEvent) throws IOException {
