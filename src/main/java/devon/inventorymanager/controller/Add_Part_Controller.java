@@ -1,5 +1,5 @@
 package devon.inventorymanager.controller;
-
+import devon.inventorymanager.model.Part;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.InHouse;
 import devon.inventorymanager.model.Inventory;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class Add_Part_Controller implements Initializable {
     public RadioButton InHouse;
     public RadioButton OutSourced;
-    public ToggleGroup Part;
+    public ToggleGroup ToggleGroupPart;
     public Label MachineIDLabel;
     public Button partSave;
     public Button partCancel;
@@ -44,21 +44,23 @@ public class Add_Part_Controller implements Initializable {
 
 
     public void onpartSave(ActionEvent actionEvent) throws IOException {
-        String idS = partIDTF.getText();
+        // Generate a new ID
+        int id = Part.generateNewId();
+        //get input from each text field
         String nameS = partNameTF.getText();
         String invS = partInvTF.getText();
         String priceS =partPriceTF.getText();
         String maxS = partMaxTF.getText();
         String machineS = partMachineTF.getText();
         String minS = partMinTF.getText();
-        //System.out.println(idS + " " + nameS + " " + invS + " " + priceS + " " + maxS + " " + machineS + " " + minS + " ");
+
+
         // if the name value is blank then part will not be added.
         if(nameS.isBlank()){
             System.out.println("Name Value is Blank");
             return;
         }
 //convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
-        int id = 0;
         int stock = 0;
         double price = 0;
         int min = 0;
@@ -66,8 +68,6 @@ public class Add_Part_Controller implements Initializable {
         int machine = 0;
         String error = "";
         try {
-            error = "id";
-            id = Integer.parseInt(idS);
             error = "stock";
             stock = Integer.parseInt(invS);
             error = "price";
@@ -79,15 +79,17 @@ public class Add_Part_Controller implements Initializable {
             error = "machine ID";
             machine = Integer.parseInt(machineS);
 
-//            min <= stock stock <= max
+//            number in stock cannot be less than minimum
             if(min > stock){
                 System.out.println("inv must be >= min");
                 return;
             }
+            // number in stock cannot be more than maximum
             if(stock > max){
                 System.out.println("inv must be <= max");
                 return;
                 }
+            // price cannot be less than zero
             if(price < 0){
                 System.out.println("price cannot be negative");
                 return;
@@ -101,6 +103,9 @@ public class Add_Part_Controller implements Initializable {
             System.out.println(error + " " + "value must be a number!");
             return;
         }
+
+
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
