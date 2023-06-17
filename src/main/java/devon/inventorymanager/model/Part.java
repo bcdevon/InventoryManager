@@ -2,6 +2,15 @@ package devon.inventorymanager.model;
 
 public abstract class Part {
     private int id;
+    //generate an id for each part added and increment by 1
+    public Part() {
+        this.id = generateNewId();
+    }
+    private static int lastAssignedId = 0;
+    public static int generateNewId() {
+        return ++lastAssignedId;
+    }
+
     private String name;
     private double price;
     private int stock;
