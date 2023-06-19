@@ -48,6 +48,10 @@ public class Add_Product_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //set default for product id text field
+        productIDTF.setText("ID will be auto generated");
+
+        //populate available parts table
         availableParts = Inventory.getAllParts();
         availablePartsTable.setItems(availableParts);
 
@@ -89,8 +93,8 @@ public class Add_Product_Controller implements Initializable {
 
     public void onaddProductSave(ActionEvent actionEvent) {
         int productID = Product.generateNewProductId();
-        //Get values from textfields
 
+        //Get values from textfields
         String productName = productNameTF.getText();
         int productInventory = Integer.parseInt(productInvTF.getText());
         double productPrice = Double.parseDouble(productPriceTF.getText());

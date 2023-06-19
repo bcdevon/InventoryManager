@@ -32,6 +32,8 @@ public class Add_Part_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //set default for part id text field
+        partIDTF.setText("ID will be auto generated");
     }
 
     public void onInHouse(ActionEvent actionEvent) {
