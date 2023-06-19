@@ -17,9 +17,9 @@
       </Label>
       <RadioButton fx:id="InHouse" layoutX="183.0" layoutY="62.0" mnemonicParsing="false" onAction="#onInHouse" text="In-House">
          <toggleGroup>
-            <ToggleGroup fx:id="Part" />
+            <ToggleGroup fx:id="ToggleGroupPart" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="OutSourced" layoutX="338.0" layoutY="62.0" mnemonicParsing="false" onAction="#onOutSourced" text="Outsourced" toggleGroup="$Part" />
+      <RadioButton fx:id="OutSourced" layoutX="338.0" layoutY="62.0" mnemonicParsing="false" onAction="#onOutSourced" text="Outsourced" toggleGroup="$ToggleGroupPart" />
       <Label layoutX="88.0" layoutY="144.0" text="ID" />
       <Label layoutX="88.0" layoutY="189.0" text="Name" />
       <TextField fx:id="partIDTF" layoutX="183.0" layoutY="140.0" />

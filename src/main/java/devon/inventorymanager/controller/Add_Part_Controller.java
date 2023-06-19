@@ -1,4 +1,5 @@
 package devon.inventorymanager.controller;
+import devon.inventorymanager.model.OutSourced;
 import devon.inventorymanager.model.Part;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.InHouse;
@@ -42,6 +43,7 @@ public class Add_Part_Controller implements Initializable {
 
     public void onOutSourced(ActionEvent actionEvent) {
         MachineIDLabel.setText("Company Name");
+
     }
 
 
@@ -62,26 +64,24 @@ public class Add_Part_Controller implements Initializable {
             System.out.println("Name Value is Blank");
             return;
         }
+
 //convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
         int stock = 0;
         double price = 0;
         int min = 0;
         int max = 0;
-        int machine = 0;
-        String error = "";
-        try {
-            error = "stock";
-            stock = Integer.parseInt(invS);
-            error = "price";
-            price = Double.parseDouble(priceS);
-            error = "min";
-            min = Integer.parseInt(minS);
-            error = "max";
-            max = Integer.parseInt(maxS);
-            error = "machine ID";
-            machine = Integer.parseInt(machineS);
+        String companyName = "";
 
-//            number in stock cannot be less than minimum
+        try {
+
+            stock = Integer.parseInt(invS);
+
+            price = Double.parseDouble(priceS);
+
+            min = Integer.parseInt(minS);
+
+            max = Integer.parseInt(maxS);
+            //            number in stock cannot be less than minimum
             if(min > stock){
                 System.out.println("inv must be >= min");
                 return;
@@ -90,7 +90,7 @@ public class Add_Part_Controller implements Initializable {
             if(stock > max){
                 System.out.println("inv must be <= max");
                 return;
-                }
+            }
             // price cannot be less than zero
             if(price < 0){
                 System.out.println("price cannot be negative");
@@ -98,13 +98,27 @@ public class Add_Part_Controller implements Initializable {
             }
         }
         catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error dialog");
-            alert.setContentText("Please enter a valid value for each field.");
-            alert.showAndWait();
-            System.out.println(error + " " + "value must be a number!");
-            return;
+            // Handle number format exception
         }
+
+            // check if outsourced is selected
+            if (ToggleGroupPart.getSelectedToggle() == OutSourced) {
+                //store the company name as string
+                companyName = machineS;
+                //add outsourced part to the inventory
+                OutSourced outSourcedPart = new OutSourced(id, nameS, price, stock, min, max, companyName);
+                Inventory.addPart(outSourcedPart);
+            }
+            else {
+                //store the machine id as int
+                int machine = Integer.parseInt(machineS);
+                //add in house part to inventory
+                InHouse inHousePart = new InHouse(id, nameS, price, stock, min, max, machine);
+                Inventory.addPart(inHousePart);
+            }
+
+
+
 
 
 
@@ -116,8 +130,7 @@ public class Add_Part_Controller implements Initializable {
         stage.show();
 
 
-        InHouse widget = new InHouse(id, nameS, price, stock, min, max, machine);
-        Inventory.addPart(widget);
+
     }
 
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
