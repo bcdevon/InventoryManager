@@ -6,6 +6,14 @@ import javafx.collections.ObservableList;
 public class Product {
     private ObservableList<Part> associatedParts;
     private int id;
+    public Product() {
+        this.id = generateNewProductId();
+    }
+
+    private static int lastAssignedProductId = 0;
+    public static int generateNewProductId() {
+        return ++ lastAssignedProductId;
+    }
     private String name;
     private double price;
     private int stock;

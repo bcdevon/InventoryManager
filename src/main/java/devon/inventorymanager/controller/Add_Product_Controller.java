@@ -88,8 +88,9 @@ public class Add_Product_Controller implements Initializable {
     }
 
     public void onaddProductSave(ActionEvent actionEvent) {
+        int productID = Product.generateNewProductId();
         //Get values from textfields
-        int productID = Integer.parseInt(productIDTF.getText());
+
         String productName = productNameTF.getText();
         int productInventory = Integer.parseInt(productInvTF.getText());
         double productPrice = Double.parseDouble(productPriceTF.getText());
