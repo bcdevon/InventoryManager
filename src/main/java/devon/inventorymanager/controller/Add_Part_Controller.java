@@ -71,15 +71,16 @@ public class Add_Part_Controller implements Initializable {
         int min = 0;
         int max = 0;
         String companyName = "";
+        String error = "";
 
         try {
-
+            error = "stock";
             stock = Integer.parseInt(invS);
-
+            error = "price";
             price = Double.parseDouble(priceS);
-
+            error = "min";
             min = Integer.parseInt(minS);
-
+            error = "max";
             max = Integer.parseInt(maxS);
             //            number in stock cannot be less than minimum
             if(min > stock){
@@ -98,6 +99,12 @@ public class Add_Part_Controller implements Initializable {
             }
         }
         catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error dialog");
+            alert.setContentText("Please enter a valid value for " + error + " field" );
+            alert.showAndWait();
+            System.out.println(error + " " + "wrong value entered!");
+            return;
             // Handle number format exception
         }
 
@@ -110,11 +117,21 @@ public class Add_Part_Controller implements Initializable {
                 Inventory.addPart(outSourcedPart);
             }
             else {
-                //store the machine id as int
-                int machine = Integer.parseInt(machineS);
-                //add in house part to inventory
-                InHouse inHousePart = new InHouse(id, nameS, price, stock, min, max, machine);
-                Inventory.addPart(inHousePart);
+                try {
+                    //store the machine id as int
+                    int machine = Integer.parseInt(machineS);
+                    //add in house part to inventory
+                    InHouse inHousePart = new InHouse(id, nameS, price, stock, min, max, machine);
+                    Inventory.addPart(inHousePart);
+                } catch(NumberFormatException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setContentText("Please enter a valid machine ID.");
+                    alert.showAndWait();
+                    System.out.println("Invalid machine ID.");
+                    return;
+                }
+
             }
 
 
