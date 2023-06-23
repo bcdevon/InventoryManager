@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -100,6 +97,16 @@ public class Add_Product_Controller implements Initializable {
         double productPrice = Double.parseDouble(productPriceTF.getText());
         int productMax = Integer.parseInt(productMaxTF.getText());
         int productMin = Integer.parseInt(productMinTF.getText());
+
+        //if the product name field is blank
+        if(productName.isBlank()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please enter a name for the Product");
+            alert.showAndWait();
+            System.out.println("Name value is blank");
+            return;
+        }
 
         Product newProduct = new Product(productID, productName, productPrice, productInventory, productMin, productMax);
 

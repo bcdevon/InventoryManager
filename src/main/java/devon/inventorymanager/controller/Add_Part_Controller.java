@@ -61,6 +61,10 @@ public class Add_Part_Controller implements Initializable {
 
         // if the name value is blank then part will not be added.
         if(nameS.isBlank()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please enter a name for the Part");
+            alert.showAndWait();
             System.out.println("Name Value is Blank");
             return;
         }
@@ -84,16 +88,28 @@ public class Add_Part_Controller implements Initializable {
             max = Integer.parseInt(maxS);
             //            number in stock cannot be less than minimum
             if(min > stock){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be less than min.");
+                alert.showAndWait();
                 System.out.println("inv must be >= min");
                 return;
             }
             // number in stock cannot be more than maximum
             if(stock > max){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be more than max.");
+                alert.showAndWait();
                 System.out.println("inv must be <= max");
                 return;
             }
             // price cannot be less than zero
             if(price < 0){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Price cannot be less than zero");
+                alert.showAndWait();
                 System.out.println("price cannot be negative");
                 return;
             }
@@ -134,20 +150,12 @@ public class Add_Part_Controller implements Initializable {
 
             }
 
-
-
-
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("tables");
         stage.setScene(scene);
         stage.show();
-
-
-
     }
 
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
