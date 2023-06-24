@@ -69,7 +69,7 @@ public class Add_Part_Controller implements Initializable {
             return;
         }
 
-//convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
+//convert values entered in text fields to the proper data type. If incorrect data type is enter in a text field catches the exception.
         int stock = 0;
         double price = 0;
         int min = 0;
@@ -114,6 +114,7 @@ public class Add_Part_Controller implements Initializable {
                 return;
             }
         }
+        // Handle number format exception
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error dialog");
@@ -121,7 +122,7 @@ public class Add_Part_Controller implements Initializable {
             alert.showAndWait();
             System.out.println(error + " " + "wrong value entered!");
             return;
-            // Handle number format exception
+
         }
 
             // check if outsourced is selected
