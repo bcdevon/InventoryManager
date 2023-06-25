@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -96,10 +93,76 @@ public class Add_Product_Controller implements Initializable {
 
         //Get values from textfields
         String productName = productNameTF.getText();
-        int productInventory = Integer.parseInt(productInvTF.getText());
-        double productPrice = Double.parseDouble(productPriceTF.getText());
-        int productMax = Integer.parseInt(productMaxTF.getText());
-        int productMin = Integer.parseInt(productMinTF.getText());
+        String productInventoryS = productInvTF.getText();
+        String productPriceS = productPriceTF.getText();
+        String productMaxS = productMaxTF.getText();
+        String productMinS = productMinTF.getText();
+
+        //if the product name field is blank
+        if(productName.isBlank()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please enter a name for the Product");
+            alert.showAndWait();
+            System.out.println("Name value is blank");
+            return;
+        }
+
+        //convert values to correct data types. check for incorrect entries by user.
+        double productPrice = 0;
+        int productInventory = 0;
+        int productMin = 0;
+        int productMax = 0;
+        String error = "";
+
+        try{
+            error = "product Price";
+            productPrice = Double.parseDouble(productPriceS);
+            error = "product Inventory";
+            productInventory = Integer.parseInt(productInventoryS);
+            error = "product Min";
+            productMin = Integer.parseInt(productMinS);
+            error = "product Max";
+            productMax = Integer.parseInt(productMaxS);
+
+            //            number in stock cannot be less than minimum
+            if(productMin > productInventory){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be less than min.");
+                alert.showAndWait();
+                System.out.println("Inventory must be >= Min");
+                return;
+            }
+            // number in stock cannot be more than maximum
+            if(productInventory > productMax){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be more than max.");
+                alert.showAndWait();
+                System.out.println("Inventory must be <= max");
+                return;
+            }
+            // price cannot be less than zero
+            if(productPrice < 0){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Price cannot be less than zero");
+                alert.showAndWait();
+                System.out.println("price cannot be negative");
+                return;
+            }
+        }
+        // Handle number format exception
+        catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error dialog");
+            alert.setContentText("Please enter a valid value for " + error + " field" );
+            alert.showAndWait();
+            System.out.println(error + " " + "wrong value entered!");
+            return;
+
+        }
 
         Product newProduct = new Product(productID, productName, productPrice, productInventory, productMin, productMax);
 

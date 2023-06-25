@@ -61,11 +61,15 @@ public class Add_Part_Controller implements Initializable {
 
         // if the name value is blank then part will not be added.
         if(nameS.isBlank()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setContentText("Please enter a name for the Part");
+            alert.showAndWait();
             System.out.println("Name Value is Blank");
             return;
         }
 
-//convert values entered in text fields to the proper data type. If improper data type is enter in a text field catches the exception.
+//convert values entered in text fields to the proper data type. If incorrect data type is enter in a text field catches the exception.
         int stock = 0;
         double price = 0;
         int min = 0;
@@ -84,20 +88,33 @@ public class Add_Part_Controller implements Initializable {
             max = Integer.parseInt(maxS);
             //            number in stock cannot be less than minimum
             if(min > stock){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be less than min.");
+                alert.showAndWait();
                 System.out.println("inv must be >= min");
                 return;
             }
             // number in stock cannot be more than maximum
             if(stock > max){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Number in inventory cannot be more than max.");
+                alert.showAndWait();
                 System.out.println("inv must be <= max");
                 return;
             }
             // price cannot be less than zero
             if(price < 0){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Price cannot be less than zero");
+                alert.showAndWait();
                 System.out.println("price cannot be negative");
                 return;
             }
         }
+        // Handle number format exception
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error dialog");
@@ -105,7 +122,7 @@ public class Add_Part_Controller implements Initializable {
             alert.showAndWait();
             System.out.println(error + " " + "wrong value entered!");
             return;
-            // Handle number format exception
+
         }
 
             // check if outsourced is selected
@@ -123,6 +140,7 @@ public class Add_Part_Controller implements Initializable {
                     //add in house part to inventory
                     InHouse inHousePart = new InHouse(id, nameS, price, stock, min, max, machine);
                     Inventory.addPart(inHousePart);
+
                 } catch(NumberFormatException e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");
@@ -133,21 +151,13 @@ public class Add_Part_Controller implements Initializable {
                 }
 
             }
-
-
-
-
-
-
+// go back to main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("tables");
         stage.setScene(scene);
         stage.show();
-
-
-
     }
 
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
