@@ -140,6 +140,7 @@ public class Add_Part_Controller implements Initializable {
                     //add in house part to inventory
                     InHouse inHousePart = new InHouse(id, nameS, price, stock, min, max, machine);
                     Inventory.addPart(inHousePart);
+
                 } catch(NumberFormatException e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");
@@ -150,7 +151,7 @@ public class Add_Part_Controller implements Initializable {
                 }
 
             }
-
+// go back to main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
