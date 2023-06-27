@@ -85,6 +85,7 @@ public class Modfiy_Part_Controller implements Initializable {
     public void onSave(ActionEvent actionEvent) throws IOException{
         //disable Part ID modification
         modPartIDTF.setDisable(true);
+        //get values from textfields
         int partID = Integer.parseInt(modPartIDTF.getText());
         String partName = modPartNameTF.getText();
         String partStockS = modPartInvTF.getText();
