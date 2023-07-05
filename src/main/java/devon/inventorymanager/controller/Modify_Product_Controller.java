@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Modify_Product_Controller implements Initializable {
@@ -86,7 +87,15 @@ public class Modify_Product_Controller implements Initializable {
     public void onRemoveModifyProduct(ActionEvent actionEvent) {
         Part selectedPart = (Part )productAssociatedPartsTable.getSelectionModel().getSelectedItem();
         if(selectedPart != null) {
-            productAssociatedParts.remove(selectedPart);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete");
+            alert.setHeaderText("Delete Associated Part");
+            alert.setContentText("Do you want to remove this part from the product");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                productAssociatedParts.remove(selectedPart);
+            }
         }
     }
 
