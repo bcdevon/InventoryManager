@@ -114,6 +114,16 @@ public class mainController implements Initializable {
         if (selectedProduct == null) {
             return;
         }
+        //check if there are any associated parts
+        if (selectedProduct.getAssociatedParts().size() > 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Product Deletion Error");
+            alert.setContentText("Cannot delete a product with associated parts.");
+            alert.showAndWait();
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete");
         alert.setHeaderText("Deleting Product");
