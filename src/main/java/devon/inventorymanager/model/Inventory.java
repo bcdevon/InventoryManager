@@ -24,19 +24,19 @@ public class Inventory {
         return allProducts;
     }
     public static void addTestData() {
-        InHouse wheel = new InHouse(3, "Wheel", 25.00, 5, 1, 10, 42);
+        InHouse wheel = new InHouse(1, "Wheel", 25.00, 5, 1, 10, 42);
         Inventory.addPart(wheel);
-        OutSourced Rim = new OutSourced(5, "Rim", 50.00, 8, 1, 10, "Wheel company" );
+        OutSourced Rim = new OutSourced(2, "Rim", 50.00, 8, 1, 10, "Wheel company" );
         Inventory.addPart(Rim);
-        InHouse powerplant = new InHouse(11,"PT6",65000.0,5,1,10,33);
+        InHouse powerplant = new InHouse(3,"Turbine Engine",65000.0,5,1,10,33);
         Inventory.addPart(powerplant);
-        OutSourced Piston_engine = new OutSourced(2,"Rotax 912", 33000, 2,1,15,"Rotax");
+        OutSourced Piston_engine = new OutSourced(4,"Rotax", 33000, 2,1,15,"Rotax");
         Inventory.addPart(Piston_engine);
-        Product motorcycle = new Product(6, "Electric motorcycle", 15000.75, 1, 1, 5);
+        Product motorcycle = new Product(1, "Electric motorcycle", 15000.75, 1, 1, 5);
         Inventory.addProduct(motorcycle);
-        Product airplane = new Product(7,"kitfox", 35000.76, 2, 1, 5);
+        Product airplane = new Product(2,"kitfox", 35000.76, 2, 1, 5);
         Inventory.addProduct(airplane);
-        Product gokart = new Product(10,"ranger", 150.23, 6,1,10);
+        Product gokart = new Product(3,"ranger", 150.23, 6,1,10);
         Inventory.addProduct(gokart);
     }
 }
