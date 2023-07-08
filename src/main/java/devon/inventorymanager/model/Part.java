@@ -1,14 +1,47 @@
 package devon.inventorymanager.model;
 
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Part {
     private int id;
+    private static int lastAssignedId = 0;
+    private static List<Integer> usedIds = new ArrayList<>();
     //generate an id for each part added and increment by 1
     public Part() {
         this.id = generateNewId();
     }
-    private static int lastAssignedId = 0;
     public static int generateNewId() {
-        return ++lastAssignedId;
+        lastAssignedId = findNextId();
+        usedIds.add(lastAssignedId);
+        System.out.println(lastAssignedId);
+        return lastAssignedId;
+        }
+    private static int findNextId() {
+        int nextId = lastAssignedId +1;
+        while (isDuplicateId(nextId)) {
+            nextId++;
+        }
+        return nextId;
+    }
+    private static boolean isDuplicateId(int id) {
+        for (int i = 0; i < usedIds.size(); i++) {
+            int usedId = usedIds.get(i);
+            if (usedId == id) {
+                return true;
+            }
+        }
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        for (int i = 0; i < allParts.size(); i++) {
+            Part part = allParts.get(i);
+            if (part.getId() == id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private String name;
