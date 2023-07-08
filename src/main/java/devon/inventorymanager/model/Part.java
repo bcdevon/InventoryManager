@@ -9,16 +9,16 @@ public abstract class Part {
     private int id;
     private static int lastAssignedId = 0;
     private static List<Integer> usedIds = new ArrayList<>();
-    //generate an id for each part added and increment by 1
+    //generate an id for each part added and increment by 1 create a list of ids that have been used
     public Part() {
         this.id = generateNewId();
     }
     public static int generateNewId() {
         lastAssignedId = findNextId();
         usedIds.add(lastAssignedId);
-        System.out.println(lastAssignedId);
         return lastAssignedId;
         }
+      // increment 1 from the last assigned id if the id is a duplicate increment by 1 until it is unique.
     private static int findNextId() {
         int nextId = lastAssignedId +1;
         while (isDuplicateId(nextId)) {
@@ -26,6 +26,7 @@ public abstract class Part {
         }
         return nextId;
     }
+    //if the id is a duplicate return true
     private static boolean isDuplicateId(int id) {
         for (int i = 0; i < usedIds.size(); i++) {
             int usedId = usedIds.get(i);
@@ -33,6 +34,7 @@ public abstract class Part {
                 return true;
             }
         }
+        //if the id is a duplicate of the test data return true
         ObservableList<Part> allParts = Inventory.getAllParts();
         for (int i = 0; i < allParts.size(); i++) {
             Part part = allParts.get(i);
