@@ -60,6 +60,8 @@ public class Modfiy_Part_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //disable id so it cannot be changed
+        modPartIDTF.setDisable(true);
 
     }
 

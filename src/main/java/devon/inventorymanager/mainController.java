@@ -50,8 +50,8 @@ public class mainController implements Initializable {
       @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set prompt for search fields
-        partSearch.setPromptText("Search by Name or ID");
-        productSearch.setPromptText("Search by Name or ID");
+        partSearch.setPromptText("Search by ID or Name");
+        productSearch.setPromptText("Search by ID or Name");
 
         partsTable.setItems(Inventory.getAllParts());
 
