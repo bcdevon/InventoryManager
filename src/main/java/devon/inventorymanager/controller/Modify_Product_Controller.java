@@ -58,6 +58,8 @@ public class Modify_Product_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //default message in search bar
+        searchModifyProduct.setPromptText("Search by Name or ID");
         productAvailableParts = Inventory.getAllParts();
 
         productAvailablePartsTable.setItems(productAvailableParts);

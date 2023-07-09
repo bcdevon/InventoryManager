@@ -42,12 +42,15 @@ public class Add_Product_Controller implements Initializable {
     public TableColumn associatedPartPriceCol;
     public ObservableList<Part> availableParts;
     public ObservableList<Part> associatedPartsList;
+    public TextField searchAddProduct;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchAddProduct.setPromptText("Search by Name or ID");
         //set default for product id text field
         productIDTF.setText("ID will be auto generated");
+        productIDTF.setDisable(true);
 
         //populate available parts table
         availableParts = Inventory.getAllParts();
@@ -202,5 +205,46 @@ public class Add_Product_Controller implements Initializable {
         if (selectedPart != null){
             associatedPartsList.add(selectedPart);
         }
+    }
+    private ObservableList<Part> searchByName(String partialName){
+        ObservableList<Part> namedParts = FXCollections.observableArrayList();
+
+        ObservableList<Part> allParts = Inventory.getAllParts();
+
+        for(Part np: allParts){
+            if(np.getName().contains(partialName)){
+                namedParts.add(np);
+            }
+        }
+        return namedParts;
+    }
+    private Part getPartByID(int id){
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        for(int i = 0; i < allParts.size(); i++){
+            Part idP = allParts.get(i);
+            if (idP.getId() == id){
+                return idP;
+            }
+        }
+
+        return null;
+    }
+    public void onSearchAddProduct(ActionEvent actionEvent) {
+        String addProductSearchTF = searchAddProduct.getText();
+        ObservableList<Part> parts = searchByName(addProductSearchTF);
+        availablePartsTable.setItems(parts);
+
+        if(parts.size() == 0){
+            try {
+                int id = Integer.parseInt(addProductSearchTF);
+                Part idP = getPartByID(id);
+                if (idP != null)
+                    parts.add(idP);
+            }
+            catch (NumberFormatException e){
+                //ignore
+            }
+        }
+        availablePartsTable.setItems(parts);
     }
 }

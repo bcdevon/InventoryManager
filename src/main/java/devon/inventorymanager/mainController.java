@@ -49,6 +49,9 @@ public class mainController implements Initializable {
     @FXML
       @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //set prompt for search fields
+        partSearch.setPromptText("Search by Name or ID");
+        productSearch.setPromptText("Search by Name or ID");
 
         partsTable.setItems(Inventory.getAllParts());
 
