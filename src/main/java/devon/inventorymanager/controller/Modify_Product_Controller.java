@@ -58,6 +58,10 @@ public class Modify_Product_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //disable id so it cannot be changed
+        productIDTF.setDisable(true);
+        //default message in search bar
+        searchModifyProduct.setPromptText("Search by Name or ID");
         productAvailableParts = Inventory.getAllParts();
 
         productAvailablePartsTable.setItems(productAvailableParts);

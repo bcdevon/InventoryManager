@@ -32,7 +32,7 @@ public class Inventory {
         Inventory.addPart(powerplant);
         OutSourced Piston_engine = new OutSourced(4,"Rotax", 33000, 2,1,15,"Rotax");
         Inventory.addPart(Piston_engine);
-        Product motorcycle = new Product(1, "Electric motorcycle", 15000.75, 1, 1, 5);
+        Product motorcycle = new Product(1, "Airbike", 15000.75, 1, 1, 5);
         Inventory.addProduct(motorcycle);
         Product airplane = new Product(2,"kitfox", 35000.76, 2, 1, 5);
         Inventory.addProduct(airplane);
