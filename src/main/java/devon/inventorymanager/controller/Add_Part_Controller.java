@@ -35,6 +35,8 @@ public class Add_Part_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set default for part id text field
         partIDTF.setText("ID will be auto generated");
+        //In-House selected by default
+        ToggleGroupPart.selectToggle(InHouse);
     }
 
     public void onInHouse(ActionEvent actionEvent) {
