@@ -39,17 +39,17 @@ public class Add_Part_Controller implements Initializable {
         //In-House selected by default
         ToggleGroupPart.selectToggle(InHouse);
     }
-
+//When in house is selected a machine ID must be entered
     public void onInHouse(ActionEvent actionEvent) {
         MachineIDLabel.setText("Machine ID");
     }
-
+//When outsourced is selected the name of the company the part is being outsourced to must be entered
     public void onOutSourced(ActionEvent actionEvent) {
         MachineIDLabel.setText("Company Name");
 
     }
 
-
+//save the part
     public void onpartSave(ActionEvent actionEvent) throws IOException {
         // Generate a new ID
         int id = Part.generateNewId();
@@ -79,7 +79,7 @@ public class Add_Part_Controller implements Initializable {
         int max = 0;
         String companyName = "";
         String error = "";
-
+//convert each value to the correct data type if there is an error 'error' will identify what caused the error and display an appropriate message.
         try {
             error = "stock";
             stock = Integer.parseInt(invS);
@@ -117,7 +117,7 @@ public class Add_Part_Controller implements Initializable {
                 return;
             }
         }
-        // Handle number format exception
+        // Handle any errors by displaying an appropriate message.
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error dialog");
@@ -162,7 +162,7 @@ public class Add_Part_Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+//if part is canceled go back to main screen
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
