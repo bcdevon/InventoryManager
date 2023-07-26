@@ -1,5 +1,5 @@
 package devon.inventorymanager.model;
-
+//constructor for inhouse part with getter and setter
 public class InHouse extends Part {
     private int machineID;
 

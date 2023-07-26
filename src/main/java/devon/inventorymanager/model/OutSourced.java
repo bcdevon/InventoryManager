@@ -1,5 +1,5 @@
 package devon.inventorymanager.model;
-
+// constructor for outsourced part with getter and setter
 public class OutSourced extends Part{
     private String companyName;
 
