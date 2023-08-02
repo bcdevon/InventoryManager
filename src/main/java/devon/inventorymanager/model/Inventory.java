@@ -23,7 +23,7 @@ public class Inventory {
     public static ObservableList<Product> getAllProducts() {
         return allProducts;
     }
-    //add test data parts and products
+    //sample data for parts and products
     public static void addTestData() {
         InHouse wheel = new InHouse(1, "Wheel", 25.00, 5, 1, 10, 42);
         Inventory.addPart(wheel);
