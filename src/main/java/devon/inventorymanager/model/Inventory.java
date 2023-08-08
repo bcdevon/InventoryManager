@@ -2,7 +2,7 @@ package devon.inventorymanager.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/** This class creates and inventory of parts and products.*/
 public class Inventory {
     public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
