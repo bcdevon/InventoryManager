@@ -24,6 +24,7 @@ public class Inventory {
         return allProducts;
     }
     //sample data for parts and products
+    /** This method adds test data to the inventory*/
     public static void addTestData() {
         InHouse wheel = new InHouse(1, "Wheel", 25.00, 5, 1, 10, 42);
         Inventory.addPart(wheel);
