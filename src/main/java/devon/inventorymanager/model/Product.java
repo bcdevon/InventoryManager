@@ -5,22 +5,26 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**Represents a product in the inventory.*/
 public class Product {
     private ObservableList<Part> associatedParts;
     private int id;
     private static int lastAssignedProductId = 0;
     private static List<Integer> usedProductIds = new ArrayList<>();
-    //generate an id for each product added ids should be incremented by 1 each time and be unique
+
+    /**creates a new product with a generated unique ID.*/
     public Product() {
         this.id = generateNewProductId();
+    /**Generates a new unique product ID.
+     *@return The generated product ID*/
     }
     public static int generateNewProductId() {
         lastAssignedProductId = findNextProductId();
         usedProductIds.add(lastAssignedProductId);
         return lastAssignedProductId;
     }
-    //increment 1 from the last assigned product id if the id is a duplicate increment by 1 until it is unique.
+    /**Finds the next available product ID that is not already used.
+     * @return the next available product ID.*/
     private static int findNextProductId(){
         int nextProductId = lastAssignedProductId +1;
         while (isDuplicateId(nextProductId)){
@@ -28,7 +32,9 @@ public class Product {
         }
         return nextProductId;
     }
-    //If the id is a duplicate return true
+    /**Checks if the given ID is a duplicate.
+     * @param id  The ID to check for being a duplicate.
+     * @return True if the ID is a duplicate, or else return false.*/
     private static boolean isDuplicateId(int id) {
         for (int i = 0; i < usedProductIds.size(); i++) {
             int usedProductId = usedProductIds.get(i);
@@ -109,12 +115,19 @@ public class Product {
 
         this.max = max;
     }
+
+    /**Adds an associated part to the product.
+     * @param part The part to be added to the products associated parts list.*/
      public void addAssociatedPart(Part part) {
         associatedParts.add(part);
      }
+     /**Removes an associated part from the product.
+      * @param part The part to be removed from the products associated parts list.*/
      public void removeAssociatedPart(Part part) {
         associatedParts.remove(part);
      }
+     /**Retrieves the list of associated parts for the product.
+      *@return The list of associated parts.*/
      public ObservableList<Part> getAssociatedParts() {
         return associatedParts;
      }
