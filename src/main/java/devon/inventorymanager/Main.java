@@ -17,6 +17,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         //Add test data to the inventory
         Inventory.addTestData();
+
         //Launch the application
         launch();
     }
