@@ -259,27 +259,33 @@ public class mainController implements Initializable {
 
         //show the updated scene
         app_stage.show();
-//left of here with fixing comments
-        //Update availablePartsTable with all the parts
-
-
-
     }
+
+    /**This is the search byByName method.
+     *This method searches for a part by a name or partial name.
+     * @param partialName the name to search for.
+     * @return ObservableList of parts with that match the name or partial name being searched for. */
     //loop through parts table search for parts with names that match entry in the
     //search text field and display them in the parts tableview
     private ObservableList<Part> searchByName(String partialName){
+        //a list to store the parts that match the search
         ObservableList<Part> namedParts = FXCollections.observableArrayList();
 
+        //get a list of all the parts from the inventory
         ObservableList<Part> allParts = Inventory.getAllParts();
 
+        //loop through each part in the allParts list
         for(Part np: allParts){
+            //check if the current part name matches the partial name being searched for.
             if(np.getName().contains(partialName)){
+                //if the name matches add the part to the list of matching parts
                 namedParts.add(np);
             }
         }
+        //return the list of parts that match the search criteria
         return namedParts;
     }
-
+/**left of here 8/15/2023*/
     ///Search products in table by name return parts to table view that match.
     private ObservableList<Product> searchByProductName(String partialName){
         ObservableList<Product> namedProducts = FXCollections.observableArrayList();
