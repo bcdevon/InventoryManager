@@ -5,18 +5,25 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
-/**Represents a product in the inventory.*/
+
+/**This is the Product class
+ *This class represents a Product in the inventory*/
 public class Product {
+    //a list of parts associated with this product
     private ObservableList<Part> associatedParts;
+    //the unique id of the product
     private int id;
+    //the last assigned product id
     private static int lastAssignedProductId = 0;
+    //list of product ID's already used
     private static List<Integer> usedProductIds = new ArrayList<>();
 
-    /**creates a new product with a generated unique ID.*/
+    /**This is the constructor for creating a new product with a generated unique ID.*/
     public Product() {
         this.id = generateNewProductId();
 
-    /**Generates a new unique product ID.
+    /**This is the generateNewProductId method
+     * This method generates a new unique product ID.
      *@return The generated product ID*/
     }
     public static int generateNewProductId() {
@@ -27,7 +34,9 @@ public class Product {
         //return the new ID
         return lastAssignedProductId;
     }
-    /**Finds the next available product ID that is not already used.
+
+    /**This is the findNextProductId method
+     * This method finds the next available product ID that is not already used.
      * @return the next available product ID.*/
     private static int findNextProductId(){
         //increment the last assigned ID by 1
@@ -40,7 +49,9 @@ public class Product {
         //return the unique ID
         return nextProductId;
     }
-    /**Checks if the given ID is a duplicate.
+
+    /**This is the isDuplicateID method
+     * Checks if the given product ID is a duplicate.
      * @param id  The ID to check for being a duplicate.
      * @return True if the ID is a duplicate, or else return false.*/
     private static boolean isDuplicateId(int id) {
@@ -53,12 +64,12 @@ public class Product {
                 return true;
             }
         }
-        // check if the id is a duplicate of the test data
+        // check if the id is already used in the test data
         ObservableList<Product> allProducts = Inventory.getAllProducts();
         //loop through all the products
         for (int i = 0; i < allProducts.size(); i++) {
             Product product = allProducts.get(i);
-            //check if the products ID match the given ID
+            //check if the products ID matches the given ID
             if (product.getId() == id) {
                 // return true if ID is a duplicate
                 return true;
@@ -81,7 +92,7 @@ public class Product {
      * @param price price of the product
      * @param stock current inventory stock level of the product*/
     public Product(int id, String name, double price, int stock, int min, int max) {
-        //set the values of the product using the provided values
+        //set the attributes of the product using the provided values
         this.id = id;
         this.name = name;
         this.price = price;
@@ -144,11 +155,13 @@ public class Product {
      public void addAssociatedPart(Part part) {
         associatedParts.add(part);
      }
+
      /**Removes an associated part from the product.
       * @param part The part to be removed from the products associated parts list.*/
      public void removeAssociatedPart(Part part) {
         associatedParts.remove(part);
      }
+
      /**Retrieves the list of associated parts for the product.
       *@return The list of associated parts.*/
      public ObservableList<Part> getAssociatedParts() {
