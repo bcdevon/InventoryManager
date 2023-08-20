@@ -49,7 +49,7 @@ public class mainController implements Initializable {
     public TextField partSearch;            //Text field for searching parts
     public TextField productSearch;         //Text field for searching products
 
-/**Initializes the main view and sets up the tables with data.
+/**This is the initialize method.
  * This method is called during initialization it prepares the main view and fills
  * the tables with data from the inventory.
  * It also sets up the columns in the tables to display the correct information.
