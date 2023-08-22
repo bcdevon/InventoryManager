@@ -83,25 +83,32 @@ public class Add_Part_Controller implements Initializable {
         String minS = partMinTF.getText();
 
 
-        // if the name value is blank then part will not be added.
+        // check if the part name is blank
         if(nameS.isBlank()){
+
+            //If the part name is blank show an error alert stating to enter a part name
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please enter a name for the Part");
             alert.showAndWait();
             System.out.println("Name Value is Blank");
+
+            //return without adding the part
             return;
         }
 
-//convert values entered in text fields to the proper data type. If incorrect data type is enter in a text field catches the exception.
+        //Initialize variables for part
         int stock = 0;
         double price = 0;
         int min = 0;
         int max = 0;
         String companyName = "";
         String error = "";
-//convert each value to the correct data type if there is an error 'error' will identify what caused the error and display an appropriate message.
+
         try {
+            // convert the values entered into the text fields to the correct data type.
+            // The error variable is used to keep track of which text field is currently being converted.
+            // If there is an error when a text field is being converted the error is set to that field.
             error = "stock";
             stock = Integer.parseInt(invS);
             error = "price";
@@ -110,8 +117,10 @@ public class Add_Part_Controller implements Initializable {
             min = Integer.parseInt(minS);
             error = "max";
             max = Integer.parseInt(maxS);
-            // number in stock cannot be less than minimum
+
+            // check if the number of parts in inventory is less than the minimum allowed.
             if(min > stock){
+                //Error alert if inventory is less than minimum
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Number in inventory cannot be less than min.");
@@ -119,6 +128,7 @@ public class Add_Part_Controller implements Initializable {
                 System.out.println("inv must be >= min");
                 return;
             }
+            /**left off here 8/21/2023*/
             // number in stock cannot be more than maximum
             if(stock > max){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
