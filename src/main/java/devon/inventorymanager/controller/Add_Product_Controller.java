@@ -20,7 +20,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**This is the Add_Product_Controller class
- * This class handles */
+ * This class handles adding products checking for correct data types.
+ * It handles saving or canceling when adding products as well as associating parts with products.*/
 public class Add_Product_Controller implements Initializable {
     public Button removeAssociatedPart;
     public Button addProductSave;
@@ -46,7 +47,11 @@ public class Add_Product_Controller implements Initializable {
     public ObservableList<Part> associatedPartsList;
     public TextField searchAddProduct;
 
-
+    /**This is the initialize method
+     * this method is called during initialization and sets up default values of the ID text field
+     * and populate the available parts table.
+     * @param url The locations of the Add Product.fxml
+     * @param resourceBundle The resource bundle used for initialization*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchAddProduct.setPromptText("Search by Name or ID");
@@ -58,15 +63,17 @@ public class Add_Product_Controller implements Initializable {
         availableParts = Inventory.getAllParts();
         availablePartsTable.setItems(availableParts);
 
-
+        //Set up columns for available parts table
         availablePartIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         availablePartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         availablePartInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         availablePartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        //Initialize the associated parts list and table
         associatedPartsList = FXCollections.observableArrayList();
         associatedParts.setItems(associatedPartsList);
 
+        //Set up columns for associated parts table
         associatedPartIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         associatedPartInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
@@ -75,16 +82,25 @@ public class Add_Product_Controller implements Initializable {
 
     }
 
-    
-
+    /**This is the onRemoveAssociatedPart method.
+     * this is and event handler method.
+     * this method is called when the user clicks remove associated part button.
+     * When a part is removed from a product the user must click ok to confirm.
+     * @param actionEvent The event triggered by the action event*/
     public void onRemoveAssociatedPart(ActionEvent actionEvent) {
+        //check the selected part from the associated parts table
         Part selectedPart = associatedParts.getSelectionModel().getSelectedItem();
+
+        //check if a part is selected
         if(selectedPart != null) {
+
+            //confirm if the user wants to remove the part
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete");
             alert.setHeaderText("Delete Associated Part");
             alert.setContentText("Do you want to remove this part from the product");
 
+            //if confirmed remove the associated part
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK){
                 associatedPartsList.remove(selectedPart);
@@ -93,8 +109,8 @@ public class Add_Product_Controller implements Initializable {
         }
 
     }
-    
 
+    /**left off here 8/22/2023*/
     public void onAddProductCancel(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);

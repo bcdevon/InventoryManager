@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 /**This is the Add_Part_Controller class
  *This class handles InHouse and Outsourced parts, save or cancel when a part is added.
- * It also manages the values entered in the textfields for added parts and validates the
+ * It also manages the values entered in the textfields for added parts and checks the
  * values entered in each field are the correct data type.*/
 public class Add_Part_Controller implements Initializable {
     public RadioButton InHouse;
