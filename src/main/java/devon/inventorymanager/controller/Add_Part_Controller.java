@@ -128,9 +128,10 @@ public class Add_Part_Controller implements Initializable {
                 System.out.println("inv must be >= min");
                 return;
             }
-            /**left off here 8/21/2023*/
-            // number in stock cannot be more than maximum
+
+            // check if number of parts in inventory is greater than maximum allowed.
             if(stock > max){
+                //Error alert if inventory is greater than maximum
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Number in inventory cannot be more than max.");
@@ -138,8 +139,9 @@ public class Add_Part_Controller implements Initializable {
                 System.out.println("inv must be <= max");
                 return;
             }
-            // price cannot be less than zero
+            // Check if price is negative
             if(price < 0){
+                //Error alert if price of part is less than zero
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Price cannot be less than zero");
@@ -148,10 +150,11 @@ public class Add_Part_Controller implements Initializable {
                 return;
             }
         }
-        // Handle any errors by displaying an appropriate message.
+        // Handle any conversion errors by displaying an appropriate error message.
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error dialog");
+            //If there is an error when text fields are being converted the name will be shown here.
             alert.setContentText("Please enter a valid value for " + error + " field" );
             alert.showAndWait();
             System.out.println(error + " " + "wrong value entered!");
@@ -176,6 +179,7 @@ public class Add_Part_Controller implements Initializable {
                     Inventory.addPart(inHousePart);
 
                 } catch(NumberFormatException e) {
+                    //handle invalid machine ID error display error message
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");
                     alert.setContentText("Please enter a valid machine ID.");
@@ -193,8 +197,13 @@ public class Add_Part_Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-//if part is canceled go back to main screen
+
+    /**This is the onpartCancel method.
+     * this is an event handler method that is called when the cancel button is clicked
+     * The part will not be added and the application goes back to the main screen view
+     * @param actionEvent The event triggered by clicking the cancel button*/
     public void onpartCancel(ActionEvent actionEvent) throws IOException {
+        //return to the main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

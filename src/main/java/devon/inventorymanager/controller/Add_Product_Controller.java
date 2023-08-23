@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**This is the Add_Product_Controller class
+ * This class handles */
 public class Add_Product_Controller implements Initializable {
     public Button removeAssociatedPart;
     public Button addProductSave;
