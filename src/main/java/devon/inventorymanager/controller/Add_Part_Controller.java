@@ -189,7 +189,8 @@ public class Add_Part_Controller implements Initializable {
                 }
 
             }
-// go back to main screen
+
+        // go back to main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

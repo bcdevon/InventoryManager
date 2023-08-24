@@ -83,8 +83,7 @@ public class Add_Product_Controller implements Initializable {
     }
 
     /**This is the onRemoveAssociatedPart method.
-     * this is and event handler method.
-     * this method is called when the user clicks remove associated part button.
+     * this is and event handler method that is called when the user clicks remove associated part button.
      * When a part is removed from a product the user must click ok to confirm.
      * @param actionEvent The event triggered by the action event*/
     public void onRemoveAssociatedPart(ActionEvent actionEvent) {
@@ -110,8 +109,13 @@ public class Add_Product_Controller implements Initializable {
 
     }
 
-    /**left off here 8/22/2023*/
+    /**This is the onAddProductCancel method.
+     * This is an event handler method that is called if the user clicks the cancel button when on the add product screen.
+     * The product will not be added and the application returns to the main screen.
+     * @param actionEvent The event triggered when the cancel button is clicked.
+     * */
     public void onAddProductCancel(ActionEvent actionEvent) throws IOException {
+        //go back to the main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -120,18 +124,25 @@ public class Add_Product_Controller implements Initializable {
         stage.show();
     }
 
+    /**This is the onaddProductSave method.
+     * This is an event handler method that is called when the user clicks the save button after adding a new product.
+     * It retrieves values from the text fields converts them and checks for correct data types
+     * and then adds them to the inventory it also adds associated parts to the product.
+     * @param actionEvent The event triggered by clicking the save button.*/
     public void onaddProductSave(ActionEvent actionEvent) {
+        //generate a product ID
         int productID = Product.generateNewProductId();
 
-        //Get values from textfields
+        //Get values from text fields
         String productName = productNameTF.getText();
         String productInventoryS = productInvTF.getText();
         String productPriceS = productPriceTF.getText();
         String productMaxS = productMaxTF.getText();
         String productMinS = productMinTF.getText();
 
-        //if the product name field is blank
+        //check if the product name field is blank
         if(productName.isBlank()){
+            //if the name field is blank display an alert error
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setContentText("Please enter a name for the Product");
@@ -140,7 +151,7 @@ public class Add_Product_Controller implements Initializable {
             return;
         }
 
-        //convert values to correct data types. check for incorrect entries by user.
+        //Initialize variables.
         double productPrice = 0;
         int productInventory = 0;
         int productMin = 0;
@@ -148,6 +159,9 @@ public class Add_Product_Controller implements Initializable {
         String error = "";
 
         try{
+            // convert the values entered into the text fields to the correct data type.
+            // The error variable is used to keep track of which text field is currently being converted.
+            // If there is an error when a text field is being converted the error is set to that field.
             error = "product Price";
             productPrice = Double.parseDouble(productPriceS);
             error = "product Inventory";
@@ -157,8 +171,9 @@ public class Add_Product_Controller implements Initializable {
             error = "product Max";
             productMax = Integer.parseInt(productMaxS);
 
-            //            number in stock cannot be less than minimum
+            // check if number in inventory is less than minimum allowed
             if(productMin > productInventory){
+                //if inventory is below min display Error alert message
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Number in inventory cannot be less than min.");
@@ -166,8 +181,9 @@ public class Add_Product_Controller implements Initializable {
                 System.out.println("Inventory must be >= Min");
                 return;
             }
-            // number in stock cannot be more than maximum
+            // check if number in stock is more than maximum allowed
             if(productInventory > productMax){
+                //display Error alert if inventory is more that max
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Number in inventory cannot be more than max.");
@@ -175,8 +191,9 @@ public class Add_Product_Controller implements Initializable {
                 System.out.println("Inventory must be <= max");
                 return;
             }
-            // price cannot be less than zero
+            // check if price is less than zero
             if(productPrice < 0){
+                //display Error alert if price is negative
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setContentText("Price cannot be less than zero");
@@ -196,6 +213,7 @@ public class Add_Product_Controller implements Initializable {
 
         }
 
+        //Create a new product with the user entered information
         Product newProduct = new Product(productID, productName, productPrice, productInventory, productMin, productMax);
 
         //add the associated parts to the new product
@@ -205,6 +223,7 @@ public class Add_Product_Controller implements Initializable {
         Inventory.addProduct(newProduct);
 
         try {
+            //return to the main screen after saving
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
