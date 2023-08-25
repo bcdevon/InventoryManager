@@ -237,44 +237,97 @@ public class Add_Product_Controller implements Initializable {
 
     }
 
+    /**This is the onAddPartToProduct method.
+     * This method adds the selected parts to the associated parts list of the product
+     * When the add button is clicked this method is called it adds the selected part from the available parts
+     * table to the associated parts list of the product being created or modified.
+     * @param actionEvent The event triggered by clicking the add button.*/
     public void onAddPartToProduct(ActionEvent actionEvent) {
+        //Get the selected part from the available parts
         Part selectedPart = (Part) availablePartsTable.getSelectionModel().getSelectedItem();
+
+        //check if a part is selected
         if (selectedPart != null){
+            //add the selected part to the list of associated parts for the product
             associatedPartsList.add(selectedPart);
         }
     }
+
+    /**This is the searchByName method.
+     * This method takes a partial name as input searches through all parts in the inventory.
+     * If any part names contain the partial name they are added to a list of named parts
+     * @param partialName The partial name to search for.
+     * @return ObservableList of parts that contain the partial name being searched for.
+     * */
     private ObservableList<Part> searchByName(String partialName){
+        //Observable list to store parts that match search criteria
         ObservableList<Part> namedParts = FXCollections.observableArrayList();
 
+        //Get a list of allParts from the inventory
         ObservableList<Part> allParts = Inventory.getAllParts();
 
+        //Iterate through all parts to find matches for partial name
         for(Part np: allParts){
+
+            //check if the part name contains the partial name
             if(np.getName().contains(partialName)){
+
+                //if a match is found add part to list of named parts
                 namedParts.add(np);
             }
         }
+        //return namedParts list
         return namedParts;
     }
+
+    /**This is the getPartByID method.
+     * This method is called when user searches for a part by its ID to add to a product.
+     *This method takes an ID as input searches through the inventory to find the matching ID.
+     * If any part matches the ID being searched for it is returned ID's are unique should only be one.
+     * @param id The ID of the part searched for
+     *@return The part with the matching ID*/
     private Part getPartByID(int id){
+        //get the list of all parts
         ObservableList<Part> allParts = Inventory.getAllParts();
+
+        //Search through all parts to find the one with matching ID
         for(int i = 0; i < allParts.size(); i++){
             Part idP = allParts.get(i);
+
+            //check if ID matches ID being searched for
             if (idP.getId() == id){
+                //if matches return
                 return idP;
             }
         }
-
+        //if no match found return null
         return null;
     }
+
+    /**This is the onSearchAddProduct method.
+     *This method is called when a user performs a search for a part to add to a product.
+     * It searches by ID or partial name and updates the available parts table with matches.
+     * @param actionEvent The event triggered by the search action*/
     public void onSearchAddProduct(ActionEvent actionEvent) {
+        //get the text from the search text field
         String addProductSearchTF = searchAddProduct.getText();
+
+        //search for parts by partial name calls search by name method
         ObservableList<Part> parts = searchByName(addProductSearchTF);
+
+        //update available parts table with parts that match
         availablePartsTable.setItems(parts);
 
+        //if no matching parts are found search by ID
         if(parts.size() == 0){
             try {
+                //covert search text to integer to check if it's a valid ID
                 int id = Integer.parseInt(addProductSearchTF);
+
+                //search for a part by the ID calls getPartByID method
                 Part idP = getPartByID(id);
+
+                //If a part with the searched ID is found add it to the search results
                 if (idP != null)
                     parts.add(idP);
             }
@@ -282,6 +335,7 @@ public class Add_Product_Controller implements Initializable {
                 //ignore
             }
         }
+        //update the available parts table with the search results either.
         availablePartsTable.setItems(parts);
     }
 }
