@@ -69,8 +69,10 @@ public class Add_Product_Controller implements Initializable {
         availablePartInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         availablePartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        //Initialize the associated parts list and table
+        //create a list of associated parts
         associatedPartsList = FXCollections.observableArrayList();
+
+        //set the associated parts in the table view
         associatedParts.setItems(associatedPartsList);
 
         //Set up columns for associated parts table
@@ -78,16 +80,15 @@ public class Add_Product_Controller implements Initializable {
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         associatedPartInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-
     }
 
     /**This is the onRemoveAssociatedPart method.
-     * this is and event handler method that is called when the user clicks remove associated part button.
+     * This is and event handler method that is called when the user clicks remove associated part button.
+     * Removes a selected part from the products associated parts list.
      * When a part is removed from a product the user must click ok to confirm.
      * @param actionEvent The event triggered by the action event*/
     public void onRemoveAssociatedPart(ActionEvent actionEvent) {
-        //check the selected part from the associated parts table
+        //get the selected part from the associated parts table
         Part selectedPart = associatedParts.getSelectionModel().getSelectedItem();
 
         //check if a part is selected
@@ -112,8 +113,7 @@ public class Add_Product_Controller implements Initializable {
     /**This is the onAddProductCancel method.
      * This is an event handler method that is called if the user clicks the cancel button when on the add product screen.
      * The product will not be added and the application returns to the main screen.
-     * @param actionEvent The event triggered when the cancel button is clicked.
-     * */
+     * @param actionEvent The event triggered when the cancel button is clicked.*/
     public void onAddProductCancel(ActionEvent actionEvent) throws IOException {
         //go back to the main screen
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
@@ -240,7 +240,7 @@ public class Add_Product_Controller implements Initializable {
     /**This is the onAddPartToProduct method.
      * This method adds the selected parts to the associated parts list of the product
      * When the add button is clicked this method is called it adds the selected part from the available parts
-     * table to the associated parts list of the product being created or modified.
+     * table to the associated parts list of the product being created.
      * @param actionEvent The event triggered by clicking the add button.*/
     public void onAddPartToProduct(ActionEvent actionEvent) {
         //Get the selected part from the available parts
@@ -257,8 +257,7 @@ public class Add_Product_Controller implements Initializable {
      * This method takes a partial name as input searches through all parts in the inventory.
      * If any part names contain the partial name they are added to a list of named parts
      * @param partialName The partial name to search for.
-     * @return ObservableList of parts that contain the partial name being searched for.
-     * */
+     * @return ObservableList of parts that contain the partial name being searched for.*/
     private ObservableList<Part> searchByName(String partialName){
         //Observable list to store parts that match search criteria
         ObservableList<Part> namedParts = FXCollections.observableArrayList();
@@ -266,7 +265,7 @@ public class Add_Product_Controller implements Initializable {
         //Get a list of allParts from the inventory
         ObservableList<Part> allParts = Inventory.getAllParts();
 
-        //Iterate through all parts to find matches for partial name
+        //Iterate through all parts to find matches for the partial name
         for(Part np: allParts){
 
             //check if the part name contains the partial name
@@ -296,7 +295,7 @@ public class Add_Product_Controller implements Initializable {
 
             //check if ID matches ID being searched for
             if (idP.getId() == id){
-                //if matches return
+                //if it matches return
                 return idP;
             }
         }
@@ -335,7 +334,7 @@ public class Add_Product_Controller implements Initializable {
                 //ignore
             }
         }
-        //update the available parts table with the search results either.
+        //update the available parts table with the search results
         availablePartsTable.setItems(parts);
     }
 }

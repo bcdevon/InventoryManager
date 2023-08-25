@@ -20,8 +20,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**This is the Modify_Part_Controller class.
- * This class handles modifying parts details,
- * The user is able to modify name, inventory, price, min, max, machineID, company name*/
+ * This class handles modifying part details.
+ * The user is able to modify name, inventory, price, min, max, machineID, company name.*/
 public class Modfiy_Part_Controller implements Initializable {
     public TextField modPartIDTF;
     public TextField modPartNameTF;
@@ -72,7 +72,7 @@ public class Modfiy_Part_Controller implements Initializable {
     /**This is the initialize method.
      *This method is called during initialization and sets up the initial state of a part.
      * The ID field is disabled and the radio buttons are set.
-     * @param url The location of the Modify Product.fxml
+     * @param url The location of the Modify Part.fxml
      * @param resourceBundle The resource bundle used for initialization*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
