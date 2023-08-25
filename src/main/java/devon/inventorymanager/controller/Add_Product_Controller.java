@@ -47,10 +47,10 @@ public class Add_Product_Controller implements Initializable {
     public ObservableList<Part> associatedPartsList;
     public TextField searchAddProduct;
 
-    /**This is the initialize method
+    /**This is the initialize method.
      * this method is called during initialization and sets up default values of the ID text field
      * and populate the available parts table.
-     * @param url The locations of the Add Product.fxml
+     * @param url The location of the Add Product.fxml
      * @param resourceBundle The resource bundle used for initialization*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
