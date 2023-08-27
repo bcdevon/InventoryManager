@@ -7,7 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-/** This Main class is the beginning of the application.
+/** JAVADOC LOCATION InventoryManager\javadoc
+ * FUTURE ENHANCEMENT Implementing a database is would be a significant enhancement. It would allow the data to save
+ * and persist after the application is closed.
+ * This Main class is the beginning of the application.
  * This class initializes and launches the application.*/
 
 public class Main extends Application {

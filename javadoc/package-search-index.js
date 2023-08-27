@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"devon.inventorymanager","l":"devon.inventorymanager"},{"m":"devon.inventorymanager","l":"devon.inventorymanager.controller"},{"m":"devon.inventorymanager","l":"devon.inventorymanager.model"}];updateSearchResults();

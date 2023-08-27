@@ -67,7 +67,10 @@ public class Add_Part_Controller implements Initializable {
         MachineIDLabel.setText("Company Name");
     }
 
-    /** This is the onPartSave method.
+    /** LOGICAL ERROR. C:\Users\brady\OneDrive\Desktop\Software1\InventoryManager\src\main\java\devon\inventorymanager\controller\Add_Part_Controller.java:178:90
+     java: incompatible types: java.lang.String cannot be converted to int.
+     This error was fixed by parsing the machineID to an int. int machine = Integer.parseInt(machineS);
+     * This is the onPartSave method.
      * This is an event handler method that is called when the save button is clicked.
      * This method handles user inputs, validates data, and adds the new part to the inventory.
      * @param actionEvent The event triggered by clicking the save button */
