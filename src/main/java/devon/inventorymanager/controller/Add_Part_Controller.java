@@ -4,6 +4,7 @@ import devon.inventorymanager.model.Part;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.InHouse;
 import devon.inventorymanager.model.Inventory;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +36,42 @@ public class Add_Part_Controller implements Initializable {
     public TextField partMachineTF;
     public TextField partMinTF;
 
+    /** This is the ID generator class.
+     * This class handles creating unique IDs for each part that is created.*/
+    private static class IdGenerator {
+        //lastAssignedID starts at 0 will be incremented by 1 and compared against other IDs
+        private static int lastAssignedId = 0;
+        // Get the list of all parts to check for duplicates
+        private static ObservableList<Part> allParts = Inventory.getAllParts();
+
+        /** This is the generateNewId Method.
+         * This method generates a new Unique ID for a part.
+         * @return A unique part ID*/
+        public static int generateNewId() {
+            //Increment the last assigned ID by 1 and check if it has already been used.
+            lastAssignedId++;
+            //loop to find a unique ID by incrementing lastassignedId until a unique ID is found
+            while (isDuplicateId(lastAssignedId)) {
+                lastAssignedId++;
+            }
+            return lastAssignedId;
+        }
+        /** This is the isDuplicateId method.
+         * This method checks if he ID has already been used and is called by generateNewId method.
+         * @param id The ID to check for duplication
+         * @return True if the ID is a duplicate or else False*/
+        private static boolean isDuplicateId(int id) {
+            //Search through all parts
+            for (Part part : allParts) {
+                //Check if ID has been used
+                if (part.getId() == id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     /** This is the Initialize method.
      * This method is called during initialization it sets up default values.
      * @param url The location of the Add Part.fxml
@@ -64,8 +101,7 @@ public class Add_Part_Controller implements Initializable {
      * It updates the label to prompt for a Company name not a machine ID
      * @param actionEvent The event triggered by selecting the OutSourced radio button*/
     public void onOutSourced(ActionEvent actionEvent) {
-        MachineIDLabel.setText("Company Name");
-    }
+        MachineIDLabel.setText("Company Name"); }
 
     /** This is the onPartSave method.
      * This is an event handler method that is called when the save button is clicked.
@@ -73,7 +109,7 @@ public class Add_Part_Controller implements Initializable {
      * @param actionEvent The event triggered by clicking the save button */
     public void onpartSave(ActionEvent actionEvent) throws IOException {
         // Generate a new ID
-        int id = Part.generateNewId();
+        int id = IdGenerator.generateNewId();
         //get input from each text field
         String nameS = partNameTF.getText();
         String invS = partInvTF.getText();
