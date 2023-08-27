@@ -37,21 +37,33 @@ public class Add_Part_Controller implements Initializable {
     public TextField partMinTF;
 
     /** This is the ID generator class.
-     * */
+     * This class handles creating unique IDs for each part that is created.*/
     private static class IdGenerator {
+        //lastAssignedID starts at 0 will be incremented by 1 and compared against other IDs
         private static int lastAssignedId = 0;
+        // Get the list of all parts to check for duplicates
         private static ObservableList<Part> allParts = Inventory.getAllParts();
 
+        /** This is the generateNewId Method.
+         * This method generates a new Unique ID for a part.
+         * @return A unique part ID*/
         public static int generateNewId() {
+            //Increment the last assigned ID by 1 and check if it has already been used.
             lastAssignedId++;
+            //loop to find a unique ID by incrementing lastassignedId until a unique ID is found
             while (isDuplicateId(lastAssignedId)) {
                 lastAssignedId++;
             }
             return lastAssignedId;
         }
-
+        /** This is the isDuplicateId method.
+         * This method checks if he ID has already been used and is called by generateNewId method.
+         * @param id The ID to check for duplication
+         * @return True if the ID is a duplicate or else False*/
         private static boolean isDuplicateId(int id) {
+            //Search through all parts
             for (Part part : allParts) {
+                //Check if ID has been used
                 if (part.getId() == id) {
                     return true;
                 }
