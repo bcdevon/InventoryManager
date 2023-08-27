@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    /**This is the main method.
-     * This is the first method that gets called when the application is launched*/
+    /** This is the main method.
+     * This is the first method that gets called when the application is launched.*/
     public static void main(String[] args) {
         //Add test data to the inventory
         Inventory.addTestData();
@@ -22,7 +22,7 @@ public class Main extends Application {
         launch();
     }
 
-    /**This is the start method.
+    /** This is the start method.
      * This method initializes and displays the main screen.
      * @param stage This is the primary stage
      * @throws IOException If and input/output error occurs*/

@@ -1,14 +1,14 @@
 package devon.inventorymanager.model;
 
-/**This is the InHouse class
+/** This is the InHouse class.
  * The InHouse class is a class that extends from the Part class
- * It represents an InHouse part in the inventory*/
+ * It represents an InHouse part in the inventory.*/
 public class InHouse extends Part {
     //The machine ID of the part
     private int machineID;
 
-    /**This is the constructor for the InHouse class
-     * this constructor creates a new InHouse part
+    /** This is the constructor method for the InHouse part.
+     * This constructor creates a new InHouse part.
      * @param stock Current inventory stock level of the InHouse part
      * @param price Price of the part
      * @param name Name of the part
@@ -21,15 +21,15 @@ public class InHouse extends Part {
         this.machineID = machineID;
     }
 
-    /**this is the getMachineID method
-     * This gets the machine ID of an InHouse Part
+    /** This is the getMachineID method.
+     * This gets the machine ID of an InHouse Part.
      * @return machineID*/
     public int getMachineID() {
         return machineID;
     }
 
-    /**This is the setMachineID method
-     * This sets the machineID of the Inhouse part
+    /** This is the setMachineID method.
+     * This sets the machineID of the InHouse part.
      * @param machineID */
     public void setMachineID(int machineID) {
         this.machineID = machineID;

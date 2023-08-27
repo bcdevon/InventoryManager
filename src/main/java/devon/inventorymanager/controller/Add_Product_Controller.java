@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-/**This is the Add_Product_Controller class
+/** This is the Add_Product_Controller class.
  * This class handles adding products checking for correct data types.
  * It handles saving or canceling when adding products as well as associating parts with products.*/
 public class Add_Product_Controller implements Initializable {
@@ -47,7 +47,7 @@ public class Add_Product_Controller implements Initializable {
     public ObservableList<Part> associatedPartsList;
     public TextField searchAddProduct;
 
-    /**This is the initialize method.
+    /** This is the initialize method.
      * this method is called during initialization and sets up default values of the ID text field
      * and populate the available parts table.
      * @param url The location of the Add Product.fxml
@@ -82,7 +82,7 @@ public class Add_Product_Controller implements Initializable {
         associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    /**This is the onRemoveAssociatedPart method.
+    /** This is the onRemoveAssociatedPart method.
      * This is and event handler method that is called when the user clicks remove associated part button.
      * Removes a selected part from the products associated parts list.
      * When a part is removed from a product the user must click ok to confirm.
@@ -110,7 +110,7 @@ public class Add_Product_Controller implements Initializable {
 
     }
 
-    /**This is the onAddProductCancel method.
+    /** This is the onAddProductCancel method.
      * This is an event handler method that is called if the user clicks the cancel button when on the add product screen.
      * The product will not be added and the application returns to the main screen.
      * @param actionEvent The event triggered when the cancel button is clicked.*/
@@ -124,7 +124,7 @@ public class Add_Product_Controller implements Initializable {
         stage.show();
     }
 
-    /**This is the onaddProductSave method.
+    /** This is the onaddProductSave method.
      * This is an event handler method that is called when the user clicks the save button after adding a new product.
      * It retrieves values from the text fields converts them and checks for correct data types
      * and then adds them to the inventory it also adds associated parts to the product.
@@ -237,7 +237,7 @@ public class Add_Product_Controller implements Initializable {
 
     }
 
-    /**This is the onAddPartToProduct method.
+    /** This is the onAddPartToProduct method.
      * This method adds the selected parts to the associated parts list of the product
      * When the add button is clicked this method is called it adds the selected part from the available parts
      * table to the associated parts list of the product being created.
@@ -253,7 +253,7 @@ public class Add_Product_Controller implements Initializable {
         }
     }
 
-    /**This is the searchByName method.
+    /** This is the searchByName method.
      * This method takes a partial name as input searches through all parts in the inventory.
      * If any part names contain the partial name they are added to a list of named parts
      * @param partialName The partial name to search for.
@@ -279,7 +279,7 @@ public class Add_Product_Controller implements Initializable {
         return namedParts;
     }
 
-    /**This is the getPartByID method.
+    /** This is the getPartByID method.
      * This method is called when user searches for a part by its ID to add to a product.
      *This method takes an ID as input searches through the inventory to find the matching ID.
      * If any part matches the ID being searched for it is returned ID's are unique should only be one.
@@ -303,8 +303,8 @@ public class Add_Product_Controller implements Initializable {
         return null;
     }
 
-    /**This is the onSearchAddProduct method.
-     *This method is called when a user performs a search for a part to add to a product.
+    /** This is the onSearchAddProduct method.
+     * This method is called when a user performs a search for a part to add to a product.
      * It searches by ID or partial name and updates the available parts table with matches.
      * @param actionEvent The event triggered by the search action*/
     public void onSearchAddProduct(ActionEvent actionEvent) {

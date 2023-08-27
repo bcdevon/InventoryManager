@@ -1,13 +1,13 @@
 package devon.inventorymanager.model;
 
-/**This is the OutSourced class.
+/** This is the OutSourced class.
  * The OutSourced class is a class that extends from the Part class
  * It represents an Outsourced part in the inventory.*/
 public class OutSourced extends Part{
     //The name of the company the part is outsourced from
     private String companyName;
 
-    /**This is the constructor for the OutSourced class.
+    /** This is the constructor method for Outsourced parts.
      * This constructor creates a new Outsourced part.
      * @param id Unique ID of the outsourced part.
      * @param max Maximum inventory stock level allowed for the Outsourced part.
@@ -20,14 +20,14 @@ public class OutSourced extends Part{
         this.companyName = companyName;
     }
 
-    /**This is the getCompanyName method.
+    /** This is the getCompanyName method.
      * This gets the name of the company associated with the outsourced part.
      * @return companyName*/
     public String getCompanyName() {
         return companyName;
     }
 
-    /**This is the setCompanyName method.
+    /** This is the setCompanyName method.
      * This method sets the name of the company associated with the outsourced part.
      * @param companyName*/
     public void setCompanyName(String companyName) {

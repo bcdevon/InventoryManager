@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.List;
 
-/**This is the Product class
- *This class represents a Product in the inventory*/
+/** This is the Product class.
+ * This class represents a Product in the inventory.*/
 public class Product {
     //a list of parts associated with this product
     private ObservableList<Part> associatedParts;
@@ -18,11 +18,12 @@ public class Product {
     //list of product ID's already used
     private static List<Integer> usedProductIds = new ArrayList<>();
 
-    /**This is the constructor for creating a new product with a generated unique ID.*/
+    /** This is the product constructor method.
+     * For creating a new product with a generated unique ID.*/
     public Product() {
         this.id = generateNewProductId();
 
-    /**This is the generateNewProductId method
+    /** This is the generateNewProductId method
      * This method generates a new unique product ID.
      *@return The generated product ID*/
     }
@@ -35,7 +36,7 @@ public class Product {
         return lastAssignedProductId;
     }
 
-    /**This is the findNextProductId method
+    /** This is the findNextProductId method.
      * This method finds the next available product ID that is not already used.
      * @return the next available product ID.*/
     private static int findNextProductId(){
@@ -50,7 +51,7 @@ public class Product {
         return nextProductId;
     }
 
-    /**This is the isDuplicateID method
+    /** his is the isDuplicateID method.
      * Checks if the given product ID is a duplicate.
      * @param id  The ID to check for being a duplicate.
      * @return True if the ID is a duplicate, or else return false.*/
@@ -84,7 +85,7 @@ public class Product {
     private int min;
     private int max;
 
-    /**constructor to create a new product
+    /** This is a constructor method to create a new product.
      * @param id unique ID of the product
      * @param max maximum inventory stock level allowed for the product
      * @param min minimum inventory stock level allowed for the product
@@ -150,20 +151,20 @@ public class Product {
         this.max = max;
     }
 
-    /**Adds an associated part to the product.
+    /** Adds an associated part to the product.
      * @param part The part to be added to the products associated parts list.*/
      public void addAssociatedPart(Part part) {
         associatedParts.add(part);
      }
 
-     /**Removes an associated part from the product.
+     /** Removes an associated part from the product.
       * @param part The part to be removed from the products associated parts list.*/
      public void removeAssociatedPart(Part part) {
         associatedParts.remove(part);
      }
 
-     /**Retrieves the list of associated parts for the product.
-      *@return The list of associated parts.*/
+     /** Retrieves the list of associated parts for the product.
+      * @return The list of associated parts.*/
      public ObservableList<Part> getAssociatedParts() {
         return associatedParts;
      }

@@ -5,8 +5,8 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.List;
 
-/**This is the Part Class
- *This class represents a Part in the inventory*/
+/** This is the Part Class.
+ * This class represents a Part in the inventory.*/
 public abstract class Part {
     //the unique id of the part
     private int id;
@@ -16,12 +16,13 @@ public abstract class Part {
     private static List<Integer> usedIds = new ArrayList<>();
 
 
-    /**This is the constructor for creating a new part with a generated unique ID*/
+    /** This is the Part constructor method.
+     * This constructor is for creating a new part with a generated unique ID.*/
     public Part() {
         this.id = generateNewId();
     }
 
-    /**This is the generateNewId method
+    /** This is the generateNewId method.
      * This method generates a unique part ID
      * @return  the generated Part ID*/
     public static int generateNewId() {
@@ -33,8 +34,8 @@ public abstract class Part {
         return lastAssignedId;
         }
 
-        /**This is the findNextId method
-         *This method finds the next available part ID that is not already used
+        /** This is the findNextId method.
+         * This method finds the next available part ID that is not already used.
          * @return the next available part ID*/
     private static int findNextId() {
         //increment the last assigned ID by 1
@@ -48,8 +49,8 @@ public abstract class Part {
         return nextId;
     }
 
-    /**This is the isDuplicateID method
-     * This method checks if the given part ID has already been used
+    /** This is the isDuplicateID method.
+     * This method checks if the given part ID has already been used.
      * @param id The ID to check for being a duplicate
      * @return True if the ID is a duplicate, or else return false*/
     private static boolean isDuplicateId(int id) {
@@ -83,7 +84,7 @@ public abstract class Part {
     private int min;
     private int max;
 
-    /**constructor to create a new part
+    /** constructor to create a new part
      * @param stock current inventory stock level of the part
      * @param price price of the part
      * @param name name of the part

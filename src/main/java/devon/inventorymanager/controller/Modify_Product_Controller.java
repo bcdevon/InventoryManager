@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-/**This is the Modify_Product_Controller class.
+/** This is the Modify_Product_Controller class.
  * This class handles modifying product details.
  * The user is able to modify name, inventory, price, min, max, and associated parts*/
 public class Modify_Product_Controller implements Initializable {
@@ -49,7 +49,7 @@ public class Modify_Product_Controller implements Initializable {
     public TextField searchModifyProduct;
     private Product product;
 
-    /**This is the setProduct Method.
+    /** This is the setProduct Method.
      * This method populates the screen with the existing product information.
      * @param product The product to be modified.*/
     @FXML
@@ -62,7 +62,7 @@ public class Modify_Product_Controller implements Initializable {
         }
     }
 
-    /**This is the initialize method.
+    /** This is the initialize method.
      * This method is called during initialization and sets up the initial state of the product.
      * The ID field is disabled and search bar is set with a default message.
      * @param url The location of the modify Product.xml
@@ -99,8 +99,8 @@ public class Modify_Product_Controller implements Initializable {
         productAssociatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    /**This is the onAddModifyProduct method.
-     *This method is called when the add button is clicked.
+    /** This is the onAddModifyProduct method.
+     * This method is called when the add button is clicked.
      * It adds the selected part from the available parts and adds it to
      * the list of associated parts for the product being modified.
      * @param actionEvent The event triggered by clicking the add button.*/
@@ -115,7 +115,7 @@ public class Modify_Product_Controller implements Initializable {
         }
     }
 
-    /**This is the onRemoveModifyProduct method.
+    /** This is the onRemoveModifyProduct method.
      * This is an event handler method that is called when the user clicks remove associated part.
      * This method removes the selected part from the products associated parts list*/
     public void onRemoveModifyProduct(ActionEvent actionEvent) {
@@ -139,7 +139,7 @@ public class Modify_Product_Controller implements Initializable {
         }
     }
 
-    /**This is the onSaveModifyProduct method.
+    /** This is the onSaveModifyProduct method.
      * This is an event handler method that is called when the user clicks the save button after modifying a product.
      * It gets values from the text fields converts them and checks for correct data type adds or removes associated parts
      * then updates the inventory.
@@ -254,7 +254,7 @@ public class Modify_Product_Controller implements Initializable {
         }
     }
 
-   /**This is the onCancelModifyProduct method.
+   /** This is the onCancelModifyProduct method.
     * This is an event handler method that is called when the cancel button is clicked.
     * The changes to the product will not be saved and the application returns to the main screen.
     * @param actionEvent The event triggered when the cancel button is clicked*/
@@ -268,7 +268,7 @@ public class Modify_Product_Controller implements Initializable {
         stage.show();
     }
 
-    /**This is the searchByName method.
+    /** This is the searchByName method.
      * This method takes a partial name as input searches through all parts in the inventory.
      * If any part names contain the partial name they are added to a list of named parts
      * @param partialName The partial name to search for.
@@ -294,9 +294,9 @@ public class Modify_Product_Controller implements Initializable {
         return namedParts;
     }
 
-    /**This is the getPartByID method.
+    /** This is the getPartByID method.
      * This method is called when user searches for a part by its ID to add to a product.
-     *This method takes an ID as input searches through the inventory to find the matching ID.
+     * This method takes an ID as input searches through the inventory to find the matching ID.
      * If any part matches the ID being searched for it is returned ID's are unique should only be one.
      * @param id The ID of the part searched for
      *@return The part with the matching ID*/
@@ -318,8 +318,8 @@ public class Modify_Product_Controller implements Initializable {
         return null;
     }
 
-    /**This is the onModifySearch method.
-     *This method is called when a user performs a search for a part to add to a product.
+    /** This is the onModifySearch method.
+     * This method is called when a user performs a search for a part to add to a product.
      * It searches by ID or partial name and updates the available parts table with matches.
      * @param actionEvent The event triggered by the search action*/
     public void onModifySearch(ActionEvent actionEvent) {

@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**This is the Modify_Part_Controller class.
+/** This is the Modify_Part_Controller class.
  * This class handles modifying part details.
  * The user is able to modify name, inventory, price, min, max, machineID, company name.*/
 public class Modfiy_Part_Controller implements Initializable {
@@ -33,7 +33,7 @@ public class Modfiy_Part_Controller implements Initializable {
     public Button modifyPartSave;
     private Part part;
 
-    /**This is the setPart method.
+    /** This is the setPart method.
      * This method populates the screen with the existing part information
      * @param part The part to be modified*/
     public void setPart(Part part) {
@@ -69,8 +69,8 @@ public class Modfiy_Part_Controller implements Initializable {
 
     public Button modPartSave;
 
-    /**This is the initialize method.
-     *This method is called during initialization and sets up the initial state of a part.
+    /** This is the initialize method.
+     * This method is called during initialization and sets up the initial state of a part.
      * The ID field is disabled and the radio buttons are set.
      * @param url The location of the Modify Part.fxml
      * @param resourceBundle The resource bundle used for initialization*/
@@ -81,7 +81,7 @@ public class Modfiy_Part_Controller implements Initializable {
 
     }
 
-    /**This is the onModifyInHouse method.
+    /** This is the onModifyInHouse method.
      * This method is called when the InHouse toggle button is selected.
      * When the InHouse radio button is selected the label is changed to machine ID
      * and a machine ID must be entered not a company name.
@@ -90,7 +90,7 @@ public class Modfiy_Part_Controller implements Initializable {
         modifypartID.setText("Machine ID");
     }
 
-    /**This is the onModifyOutsourced method.
+    /** This is the onModifyOutsourced method.
      * This method is called when the Outsourced radio button is selected.
      * When the Outsourced radio button is selected the label is changed
      * to Company Name and a company name must be entered not a machine ID */
@@ -98,7 +98,7 @@ public class Modfiy_Part_Controller implements Initializable {
         modifypartID.setText("Company Name");
     }
 
-    /**This is the onModifyPartCancel method.
+    /** This is the onModifyPartCancel method.
      * This method is called whe the user clicks the cancel button on the modify part screen.
      * when cancel is clicked changes are not saved the application goes back to the main screen.
      * @param actionEvent The event triggered by pressing the cancel button*/
@@ -112,7 +112,7 @@ public class Modfiy_Part_Controller implements Initializable {
 
     }
 
-    /**This is the onSave method.
+    /** This is the onSave method.
      * This method is called when the save button is clicked.
      * The modified part information is saved and updated in the inventory.
      * @param actionEvent The event triggered by clicking the save button.*/

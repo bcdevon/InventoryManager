@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**This is the Add_Part_Controller class
- *This class handles InHouse and Outsourced parts, save or cancel when a part is added.
- * It also manages the values entered in the textfields for added parts and checks the
- * values entered in each field are the correct data type.*/
+/** This is the Add_Part_Controller class.
+ * This class handles InHouse and Outsourced parts, save or cancel when a part is added.
+ * It also manages the values entered in the text fields for added parts and checks the
+ * values in each field are the correct data type.*/
 public class Add_Part_Controller implements Initializable {
     public RadioButton InHouse;
     public RadioButton OutSourced;
@@ -35,7 +35,7 @@ public class Add_Part_Controller implements Initializable {
     public TextField partMachineTF;
     public TextField partMinTF;
 
-    /**This is the Initialize method.
+    /** This is the Initialize method.
      * This method is called during initialization it sets up default values.
      * @param url The location of the Add Part.fxml
      * @param resourceBundle  resources used for initialization*/
@@ -51,7 +51,7 @@ public class Add_Part_Controller implements Initializable {
         ToggleGroupPart.selectToggle(InHouse);
     }
 
-    /**This is the onInHouse method.
+    /** This is the onInHouse method.
      * This is an event handler method that is called when the In House radio button is selected.
      * it Updates the label to prompt for a machine ID not a company name.
      * @param actionEvent trigger by selecting the In House radio button*/
@@ -59,7 +59,7 @@ public class Add_Part_Controller implements Initializable {
         MachineIDLabel.setText("Machine ID");
     }
 
-    /**This is the onOutSourced method.
+    /** This is the onOutSourced method.
      * This is an event handler method that is called when the OutSourced radio button is selected.
      * It updates the label to prompt for a Company name not a machine ID
      * @param actionEvent The event triggered by selecting the OutSourced radio button*/
@@ -67,7 +67,7 @@ public class Add_Part_Controller implements Initializable {
         MachineIDLabel.setText("Company Name");
     }
 
-    /**This is the onPartSave method.
+    /** This is the onPartSave method.
      * This is an event handler method that is called when the save button is clicked.
      * This method handles user inputs, validates data, and adds the new part to the inventory.
      * @param actionEvent The event triggered by clicking the save button */
@@ -199,7 +199,7 @@ public class Add_Part_Controller implements Initializable {
         stage.show();
     }
 
-    /**This is the onpartCancel method.
+    /** This is the onpartCancel method.
      * this is an event handler method that is called when the cancel button is clicked
      * The part will not be added and the application goes back to the main screen view
      * @param actionEvent The event triggered by clicking the cancel button*/
