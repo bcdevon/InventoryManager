@@ -4,6 +4,7 @@ import devon.inventorymanager.model.Part;
 import devon.inventorymanager.Main;
 import devon.inventorymanager.model.InHouse;
 import devon.inventorymanager.model.Inventory;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +36,30 @@ public class Add_Part_Controller implements Initializable {
     public TextField partMachineTF;
     public TextField partMinTF;
 
+    /** This is the ID generator class.
+     * */
+    private static class IdGenerator {
+        private static int lastAssignedId = 0;
+        private static ObservableList<Part> allParts = Inventory.getAllParts();
+
+        public static int generateNewId() {
+            lastAssignedId++;
+            while (isDuplicateId(lastAssignedId)) {
+                lastAssignedId++;
+            }
+            return lastAssignedId;
+        }
+
+        private static boolean isDuplicateId(int id) {
+            for (Part part : allParts) {
+                if (part.getId() == id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     /** This is the Initialize method.
      * This method is called during initialization it sets up default values.
      * @param url The location of the Add Part.fxml
@@ -64,8 +89,7 @@ public class Add_Part_Controller implements Initializable {
      * It updates the label to prompt for a Company name not a machine ID
      * @param actionEvent The event triggered by selecting the OutSourced radio button*/
     public void onOutSourced(ActionEvent actionEvent) {
-        MachineIDLabel.setText("Company Name");
-    }
+        MachineIDLabel.setText("Company Name"); }
 
     /** This is the onPartSave method.
      * This is an event handler method that is called when the save button is clicked.
@@ -73,7 +97,7 @@ public class Add_Part_Controller implements Initializable {
      * @param actionEvent The event triggered by clicking the save button */
     public void onpartSave(ActionEvent actionEvent) throws IOException {
         // Generate a new ID
-        int id = Part.generateNewId();
+        int id = IdGenerator.generateNewId();
         //get input from each text field
         String nameS = partNameTF.getText();
         String invS = partInvTF.getText();
